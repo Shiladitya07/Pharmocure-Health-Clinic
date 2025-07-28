@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react"
+import {Main_logo, Nav} from "../src/pages/home"
+
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-
+      <Main_logo />
+      <Nav />
     
     </>
   )
