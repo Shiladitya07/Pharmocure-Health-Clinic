@@ -1,0 +1,22 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.logo{
+    height: 50px;
+    width: 35%;
+    float: left;
+}
+.search{
+    padding-top: 45px; 
+    height: 100px;
+    width: 35%;
+    float: left;
+
+}
+.loginbutt{
+    padding-top: 45px; 
+    height: 100px;
+    width: 30%;
+    float: left;
+}
