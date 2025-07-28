@@ -6,8 +6,11 @@ function Main_logo() {
   return (
     <>
        <header>
-          <div className="logo"><h1>Online Health Clinic</h1></div>
-          <div class="search">
+          <div className="logo">
+            <br></br>
+            <h1>Online Health Clinic</h1>
+          </div>
+          <div className="search">
             <input
             placeholder="TYPE Here"
             class="brutalist-input smooth-type"
@@ -16,7 +19,7 @@ function Main_logo() {
           <label class="brutalist-label"></label>
           </div>
         <div className="loginbutt">
-            <button>Login</button>
+            <button><a>Login</a></button>
         </div>
        </header>
        <br></br>
