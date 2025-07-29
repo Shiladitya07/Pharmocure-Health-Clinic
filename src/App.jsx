@@ -1,5 +1,5 @@
 import React from "react"
-import {Main_logo, Nav} from "../src/pages/home"
+import {Main_logo, Nav,CarouselComponent} from "../src/pages/home"
 
 
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <Main_logo />
       <Nav />
-    
+      <CarouselComponent />
     </>
   )
 }
