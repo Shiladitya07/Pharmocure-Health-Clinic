@@ -63,7 +63,7 @@ function Nav () {
 
 const CarouselComponent = () => {
   return (
-    <div style={{ width: "90%", margin: "auto" }}>
+    <div className="carousel-wrapper">
       <Carousel
         autoPlay
         infiniteLoop
@@ -73,21 +73,22 @@ const CarouselComponent = () => {
         dynamicHeight={false}
       >
         <div>
-          <img src={Top} alt="Slide 1" />
+          <img src={Top} alt="Slide 1" className="carousel-img" />
           <p className="legend">Consult Top Doctors</p>
         </div>
         <div>
-          <img src={Avail} alt="Slide 2" />
+          <img src={Avail} alt="Slide 2" className="carousel-img" />
           <p className="legend">24x7 Online Services</p>
         </div>
         <div>
-          <img src={Care} alt="Slide 3" />
+          <img src={Care} alt="Slide 3" className="carousel-img" />
           <p className="legend">Extensive Care</p>
         </div>
       </Carousel>
     </div>
   );
 };
+
 
 // specialitis//
 
