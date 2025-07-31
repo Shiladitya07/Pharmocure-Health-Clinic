@@ -36,7 +36,7 @@ function Main_logo() {
 
           </div>
         <div className="loginbutt">
-            <button><a >Login / Sign Up</a></button>
+            <button><a>Login</a></button>
         </div>
        </header>
        <br></br>
