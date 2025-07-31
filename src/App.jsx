@@ -1,5 +1,5 @@
 import React from "react"
-import {Main_logo, Nav,CarouselComponent,Specialties} from "../src/pages/home"
+import {Main_logo, Nav,CarouselComponent,Specialties, Why, Services, About} from "../src/pages/home"
 
 
 
@@ -11,6 +11,9 @@ function App() {
       <Nav />
       <CarouselComponent />
       <Specialties />
+      <Why />
+      <Services />
+      <About />
     </>
   )
 }

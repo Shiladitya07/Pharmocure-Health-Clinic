@@ -24,11 +24,11 @@ function Main_logo() {
        <header>
           <div className="logo">
             <br></br>
-            <h1>Online Health Clinic</h1>
+            <h1>ONLINE HEALTH CLINIC</h1>
           </div>
           <div className="search">
             <input
-              placeholder="TYPE Here"
+              placeholder="TYPE HERE"
               className="brutalist-input smooth-type"
               type="text"
             />
@@ -118,23 +118,163 @@ const specialties = [
   // { name: "Diabetology", icon: generalIcon },
   { name: "Dentist", icon: Dent }
 ];
-
+<hr></hr>
 const Specialties = () => {
   return (
-    <div className="specialties-section">
-      <h2>Browse by Specialties</h2>
-      <div className="specialties-grid">
-        {specialties.map((item, index) => (
-          <div className="specialty-card" key={index}>
-            <div className="icon-wrapper">
-              <img src={item.icon} alt={item.name} />
+    <>
+      <hr className="specialty-divider" />
+      <div className="specialties-section">
+        <h2>BROWSE BY SPECIALITIES</h2>
+        <div className="specialties-grid">
+          {specialties.map((item, index) => (
+            <div className="specialty-card" key={index}>
+              <div className="icon-wrapper">
+                <img src={item.icon} alt={item.name} />
+              </div>
+              <p>{item.name}</p>
             </div>
-            <p>{item.name}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      <hr className="specialty-divider" />
+    </>
   );
 };
-export {Main_logo,Nav,CarouselComponent,Specialties}
+
+function Why() {
+  return (
+    <>
+      <div className="whychoose">
+        <center>
+          <h1>WHY CHOOSE US</h1>
+          </center>
+          <br></br>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    24x7 Availability
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Verified Doctors
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Instant Prescription
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Secure Consultation
+                  </li>
+                </ul>
+              </a>
+          </div>
+      </div>
+      <hr></hr>
+    </>
+  )
+}
+function Services(){
+  return (
+    <>
+      <div className="service">
+        <center>
+          <h1>OUR SERVICES</h1>
+          </center>
+          <br></br>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Online Consultation
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Lab Test
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Medicine Delivery
+                  </li>
+                </ul>
+              </a>
+          </div>
+          <div>
+            <a>
+                <ul>
+                  <li>
+                    Mental Health and Wellnesss
+                  </li>
+                </ul>
+              </a>
+          </div>
+      </div>
+      <hr></hr>
+    </>
+    
+  )
+}
+function About(){
+  return (
+    <>
+      <div className="service">
+        <center>
+          <h1>ABOUT US</h1>
+          </center>
+          <br></br>
+          <p>
+           <center>
+             
+                Welcome to Online Health Clinic – <br></br>
+                your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br></br>
+                At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br></br>
+                experienced doctors, specialists, and medical services—all from the comfort of your home. <br></br>
+                Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br></br>
+                we’re here for you 24/7.Driven by technology and compassion, we aim to bring quality care to every corner<br></br>
+                of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br></br>
+                <b><i>Your health, our priority</i></b>
+            
+           </center>
+            <br></br>
+          </p>
+          <div>
+            <a>
+                    Contact us
+              </a>
+          </div>
+      </div>
+      <hr></hr>
+    </>
+    
+  )
+}
+
+
+export {Main_logo,Nav,CarouselComponent,Specialties,Why,Services,About}
 

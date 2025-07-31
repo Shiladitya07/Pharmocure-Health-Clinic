@@ -1,28 +1,39 @@
-/* Header */
-body{
-    margin: 0px;
-    padding: 0px;
-}
-.logo{
-    height: 50px;
-    width: 35%;
-    float: left;
-}
-.search{
-    padding-top: 45px; 
-    height: 100px;
-    width: 35%;
-    float: left;
-
-}
-.loginbutt{
-    padding-top: 45px; 
-    height: 100px;
-    width: 30%;
-    float: left;
+/* Global Reset */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-/* login */
+/* ---------------- HEADER FLEX LAYOUT ---------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px; /* top-bottom and left-right padding */
+  flex-wrap: wrap; /* wrap on small screens */
+}
+
+/* LOGO SECTION */
+.logo {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* SEARCH BAR SECTION */
+.search {
+  flex: 1;
+  text-align: center;
+  min-width: 200px;
+}
+
+/* LOGIN BUTTON SECTION */
+.loginbutt {
+  flex: 1;
+  text-align: right;
+  min-width: 200px;
+}
+
+/* ---------------- LOGIN BUTTON ---------------- */
 button {
   font: inherit;
   background-color: #f9f9f9;
@@ -39,33 +50,33 @@ button {
   transition: 0.15s ease;
   cursor: pointer;
 }
+
 button:active {
   translate: 0 0.225em;
   box-shadow: inset 0 0.03em 0 0 #f4f4f4, 0 0.03em 0 0 #efefef,
     0 0.0625em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,
     0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;
 }
-/* carousal */
+
+/* ---------------- CAROUSEL ---------------- */
 .carousel-wrapper {
-  width: 85%;          /* <- try 85%, or increase to 90% for more stretch */
-  margin: 30px auto;   /* centers the carousel with vertical spacing */
+  width: 90%;              /* more side-to-side stretch */
+  margin: 30px auto;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-img {
   width: 100%;
-  height: 400px;       /* adjust if you want it taller or shorter */
-  object-fit: contain;   /* crop and center images nicely */
+  height: 400px;
+  object-fit: contain;
 }
 
 .carousel .legend {
-  background: rgba(0, 0, 0, 0.4);
-  font-size: 1rem;
+  background: rgba(244, 240, 240, 0.4);
+  font-size: 20px;
   padding: 10px 16px;
   bottom: 20px;
   border-radius: 6px;
 }
-
-

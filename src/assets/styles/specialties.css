@@ -47,3 +47,11 @@
   font-size: 0.9rem;
   color: #333;
 }
+
+.specialty-divider {
+  border: none;
+  height: 2px;
+  background-color: #d3d3d3;  /* light grey or use your theme color */
+  width: 90%;
+  margin: 40px auto;          /* spacing and centering */
+}
