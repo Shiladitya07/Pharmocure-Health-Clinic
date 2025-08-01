@@ -14,8 +14,9 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
-import Background from "../assets/images/background.jpg"
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Login from "./login";import Background from "../assets/images/background.jpg"
+
 
 
 
@@ -45,15 +46,14 @@ function Main_logo() {
               className="search-bar"
             />
           </div>
-
-          <div className="loginbutt">
-            <button className="login-btn">Login / Sign Up</button>
-            </div>
-          </header>
-
-
-        <br></br>
-        <hr></hr> 
+        <div className="loginbutt">
+          <Link to="/login">
+            <button>Login / Sign Up</button>
+          </Link>
+        </div>
+       </header>
+       <br></br>
+       <hr></hr> 
     
     </>
   )

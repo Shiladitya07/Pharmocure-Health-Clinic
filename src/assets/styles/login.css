@@ -1,0 +1,106 @@
+.login-body {
+  background-color: rgb(219, 248, 238);
+  justify-content: center;
+  align-items: center;
+}
+.login-Loginform {
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(176, 245, 245);
+  border-radius: 20px;
+}
+.login-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.login-input {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #f2f2f2;
+}
+
+.login-button {
+  padding: 10px;
+  background-color: #005757;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.login-button:hover {
+  background-color: #00a0a0;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.login-Loginform a {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: small;
+  text-align: right;
+  padding-bottom: 10px;
+}
+
+.gmail-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #005757;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gmail-button:hover {
+  background-color: #00a0a0;
+}
+.login-input:hover {
+  background-color: #f2f2f2;
+}
+
+.gmail-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.login-Loginform hr {
+  color: rgb(151, 163, 174);
+  width: 150px;
+}
+.orLine {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+.orLine span {
+  color: rgba(0, 0, 0, 0.7);
+}
+#Reglink {
+  color: #005757;
+  text-align: center;
+  text-decoration: none;
+}
+#Reglink:hover {
+  font-weight: bolder;
+}
