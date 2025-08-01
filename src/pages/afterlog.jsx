@@ -190,56 +190,56 @@ function Why() {
     </>
   )
 }
-function Services(){
-  return (
-    <>
-      <div className="service">
-        <center>
-          <h1>OUR SERVICES</h1>
-          </center>
-          <br></br>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Online Consultation
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Lab Test
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Medicine Delivery
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Mental Health and Wellnesss
-                  </li>
-                </ul>
-              </a>
-          </div>
-      </div>
-      <hr></hr>
-    </>
+// function Services(){
+//   return (
+//     <>
+//       <div className="service">
+//         <center>
+//           <h1>OUR SERVICES</h1>
+//           </center>
+//           <br></br>
+//           <div>
+//             <a>
+//                 <ul>
+//                   <li>
+//                     Online Consultation
+//                   </li>
+//                 </ul>
+//               </a>
+//           </div>
+//           <div>
+//             <a>
+//                 <ul>
+//                   <li>
+//                     Lab Test
+//                   </li>
+//                 </ul>
+//               </a>
+//           </div>
+//           <div>
+//             <a>
+//                 <ul>
+//                   <li>
+//                     Medicine Delivery
+//                   </li>
+//                 </ul>
+//               </a>
+//           </div>
+//           <div>
+//             <a>
+//                 <ul>
+//                   <li>
+//                     Mental Health and Wellnesss
+//                   </li>
+//                 </ul>
+//               </a>
+//           </div>
+//       </div>
+//       <hr></hr>
+//     </>
     
-  )
-}
+//   )
+// }
 function About(){
   return (
     <>
@@ -276,5 +276,5 @@ function About(){
 }
 
 
-export {Main_logo,Nav,CarouselComponent,Specialties,Why,Services,About}
+export {Main_logo,Nav,CarouselComponent,Specialties,Why,About}
 
