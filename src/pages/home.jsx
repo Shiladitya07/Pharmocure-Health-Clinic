@@ -14,6 +14,7 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
+import Background from "../assets/images/background.jpg"
 import { Link } from 'react-router-dom';
 
 
@@ -151,15 +152,19 @@ function Why() {
   return (
     <>
       <div className="whychoose">
-        <center>
-          <h1>WHY CHOOSE US</h1>
-          </center>
+      <div className="whychoose-h1">
+        <h1 style={{ textAlign: "center" }}>WHY CHOOSE US</h1>
+          </div>
           <br></br>
-          <div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     24x7 Availability
+                    </button>
+                    <div className="hover-panel">We provide top-notch services with expert staff and great support!</div>
                   </li>
                 </ul>
               </a>
@@ -168,16 +173,24 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     Verified Doctors
+                    </button>
+                    <div className="hover-panel">Get in contact with doctors from our verified sources!</div>
                   </li>
                 </ul>
               </a>
           </div>
-          <div>
+          </div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Instant Prescription
+                  </button>
+                  <div className="hover-panel">Get your prescriptions in an instant!</div>
                   </li>
                 </ul>
               </a>
@@ -186,12 +199,16 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Secure Consultation
+                  </button>
+                  <div className="hover-panel">Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!</div>
                   </li>
                 </ul>
               </a>
-          </div>
-      </div>
+              </div>
+            </div>
+            </div>
       <hr></hr>
     </>
   )
@@ -200,9 +217,7 @@ function Services(){
   return (
     <>
       <div className="service">
-        <center>
-          <h1>OUR SERVICES</h1>
-          </center>
+        <h1 style={{ textAlign: "center" }}>OUR SERVICES</h1>
           <br></br>
           <div>
             <a>
@@ -250,12 +265,12 @@ function About(){
   return (
     <>
       <div className="service">
-        <center>
+        
           <h1>ABOUT US</h1>
-          </center>
+          
           <br></br>
-          <p>
-           <center>
+          
+           
              
                 Welcome to Online Health Clinic – <br></br>
                 your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br></br>
@@ -266,9 +281,9 @@ function About(){
                 of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br></br>
                 <b><i>Your health, our priority</i></b>
           
-           </center>
+          
             <br></br>
-          </p>
+          
           <div>
             <a>
                     Contact us
