@@ -14,6 +14,7 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
+import { Link } from "react-router-dom";
 
 
 function Main_logo() {
@@ -22,23 +23,25 @@ function Main_logo() {
   return (
     <>
        <header>
-          <div className="logo">
-            <br></br>
-            <h1>ONLINE HEALTH CLINIC</h1>
-          </div>
-          <div className="search">
-            <input
-              placeholder="TYPE HERE"
-              className="brutalist-input smooth-type"
-              type="text"
-            />
-          <label className="brutalist-label"></label>
+        <div className="logo">
+          <h1>
+            <Link to="/" className="home-link">ONLINE HEALTH CLINIC</Link>
 
-          </div>
-        <div className="loginbutt">
-            <button><a >Login / Sign Up</a></button>
+          </h1>
         </div>
-       </header>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search Doctors, Specialities, Conditions etc."
+            className="search-bar"
+          />
+        </div>
+          <div className="loginbutt">
+            <button className="login-btn">Login / Sign Up</button>
+        </div>
+</header>
+
+
        <br></br>
        <hr></hr> 
     
