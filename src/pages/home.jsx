@@ -123,7 +123,7 @@ const specialties = [
   { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
   { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
 ];
-<hr></hr>
+
 
 const Specialties = () => {
   return (
@@ -265,7 +265,7 @@ function About(){
                 we’re here for you 24/7.Driven by technology and compassion, we aim to bring quality care to every corner<br></br>
                 of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br></br>
                 <b><i>Your health, our priority</i></b>
-            
+          
            </center>
             <br></br>
           </p>
@@ -282,5 +282,5 @@ function About(){
 }
 
 
-export {Main_logo,Nav,CarouselComponent,Specialties,Why,Services,About}
+export {Main_logo,Nav,CarouselComponent,Specialties,Why,About,Services,};
 
