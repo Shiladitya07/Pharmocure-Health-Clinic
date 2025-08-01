@@ -14,7 +14,8 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
-
+import { Link } from "react-router-dom";
+import Login from "./login";
 
 function Main_logo() {
  
@@ -36,7 +37,9 @@ function Main_logo() {
 
           </div>
         <div className="loginbutt">
-            <button><a >Login / Sign Up</a></button>
+          <Link to="/login">
+            <button>Login / Sign Up</button>
+          </Link>
         </div>
        </header>
        <br></br>
