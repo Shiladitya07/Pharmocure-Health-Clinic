@@ -14,6 +14,8 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
+import { Link } from 'react-router-dom';
+
 
 
 function Main_logo() {
@@ -21,45 +23,63 @@ function Main_logo() {
 
   return (
     <>
-       <header>
+         <header>
           <div className="logo">
-            <br></br>
-            <h1>ONLINE HEALTH CLINIC</h1>
+            <h1>
+              <Link
+                to="/"
+                className="home-link"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                ONLINE HEALTH CLINIC
+              </Link>
+
+            </h1>
           </div>
+
           <div className="search">
             <input
-              placeholder="TYPE HERE"
-              className="brutalist-input smooth-type"
               type="text"
+              placeholder="Search Doctors, Specialities, Conditions etc."
+              className="search-bar"
             />
-          <label className="brutalist-label"></label>
-
           </div>
-        <div className="loginbutt">
-            <button><a >Login / Sign Up</a></button>
-        </div>
-       </header>
-       <br></br>
-       <hr></hr> 
+
+          <div className="loginbutt">
+            <button className="login-btn">Login / Sign Up</button>
+            </div>
+          </header>
+
+
+        <br></br>
+        <hr></hr> 
     
     </>
   )
 }
-function Nav () {
-    return (
-        <>
-           <nav>
-                <div>
-                    <a>Buy Medicine </a>
-                    <a>Book an appointment </a>
-                    <a>Consultation </a>
-                    <a>Health Records </a>
-                </div>
-            </nav>
-            <hr></hr>
-        </>
-    )
+function Nav() {
+  const navItems = [
+    { label: "Buy Medicine", icon: "💊" },
+    { label: "Book Appointment", icon: "📅" },
+    { label: "Consultation", icon: "🩺" },
+    { label: "Health Records", icon: "📁" },
+  ];
+
+  return (
+    <>
+      <nav className="nav-section">
+        {navItems.map((item, index) => (
+          <div className="nav-card" key={index}>
+            <div className="nav-icon">{item.icon}</div>
+            <div className="nav-label">{item.label}</div>
+          </div>
+        ))}
+      </nav>
+      <hr />
+    </>
+  );
 }
+
 
 const CarouselComponent = () => {
   return (
