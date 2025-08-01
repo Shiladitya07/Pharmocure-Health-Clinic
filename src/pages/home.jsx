@@ -14,6 +14,7 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
+import Background from "../assets/images/background.jpg"
 
 
 function Main_logo() {
@@ -145,15 +146,21 @@ function Why() {
   return (
     <>
       <div className="whychoose">
+      <div className="whychoose-h1">
         <center>
           <h1>WHY CHOOSE US</h1>
           </center>
+          </div>
           <br></br>
-          <div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     24x7 Availability
+                    </button>
+                    <div class="hover-panel">We provide top-notch services with expert staff and great support!</div>
                   </li>
                 </ul>
               </a>
@@ -162,16 +169,24 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     Verified Doctors
+                    </button>
+                    <div class="hover-panel">Get in contact with doctors from our verified sources!</div>
                   </li>
                 </ul>
               </a>
           </div>
-          <div>
+          </div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Instant Prescription
+                  </button>
+                  <div class="hover-panel">Get your prescriptions in an instant!</div>
                   </li>
                 </ul>
               </a>
@@ -180,12 +195,16 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Secure Consultation
+                  </button>
+                  <div class="hover-panel">Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!</div>
                   </li>
                 </ul>
               </a>
-          </div>
-      </div>
+              </div>
+            </div>
+            </div>
       <hr></hr>
     </>
   )
