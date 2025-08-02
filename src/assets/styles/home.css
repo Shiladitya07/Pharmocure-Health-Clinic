@@ -202,59 +202,39 @@ button:active {
   font-weight: 600;
   color: #333;
 }
+/* ...existing code... */
+
 .row {
   display: flex;
-  flex-wrap: wrap;             /* Allows columns to stack on small screens */
-  justify-content: center;     /* Center the columns horizontally */
-  gap: 20px;                   /* Optional spacing between columns */
-  max-width: 100%;             /* Prevent overflow */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 100%;
   margin: auto;
   padding: 0 16px;
 }
 
 .column {
-  flex: 1 1 200px;              /* Grow/shrink with base width */
+  flex: 1 1 300px;
   max-width: 400px;
   min-width: 250px;
-  display: grid;
-}
-.whychoose-h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1rem; /* increased for better visibility */
-  text-align: center;
-  background: linear-gradient(blue, rgb(60, 180, 223));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text; /* for non-webkit browsers */
-  color: transparent;    /* fallback in case clip fails */
-  display: inline-block;   /* add spacing below heading */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
 }
 
-.whychoose-button {
-  all: unset; /* Resets all styles */
-  display: inline-block;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  padding: 0.5em 1.2em;
-  border-radius: 100px;
-  font-weight: bold;
-  cursor: pointer;
-  transition-duration: 0.4s;
-  border: 2px solid blue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 280px;
+li {
+  position: relative;
+  margin-bottom: 2.5em;
+  list-style: disc;
+  transition: margin-bottom 0.3s;
 }
-.whychoose-button:active{
-  translate: 0 0.225em;
+
+li:hover {
+  margin-bottom: 7em;
 }
-.whychoose-button:hover{
-  background-color: #4650e7;
-}
-.whychoose {
-  margin-bottom: 100px;
-  display: grid;
-  place-items: center;
-}
+
 .hover-panel {
   display: none;
   background-color: #f0f4ff;
@@ -263,23 +243,39 @@ button:active {
   margin-top: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 16px rgba(0,0,0,0.15);
-  width: 280px;
+  width: 100%;
+  min-width: 250px;
+  max-width: 400px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   animation: fadeIn 0.3s ease-in-out;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  top: 110%;
 }
-.whychoose-button:hover + .hover-panel {
+
+li:hover .hover-panel,
+.whychoose-button:focus + .hover-panel {
   display: block;
 }
 
-/* Smooth fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.whychoose-button {
+  all: unset;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #222;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* Remove background, border, width, etc. */
+  transition: color 0.2s;
+  padding: 10px;
+  margin: 0;
+  display: inline;
+  border:solid 2px blue;
+  border-radius: 30px;
+  width: 300px;
+}
+.whychoose-button:hover {
+  background-color: #4650e7;
 }

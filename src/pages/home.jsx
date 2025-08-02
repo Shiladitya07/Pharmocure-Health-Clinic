@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -37,7 +37,6 @@ function Main_logo() {
             </Link>
           </h1>
         </div>
-
         <div className="search">
           <input
             type="text"
@@ -45,14 +44,12 @@ function Main_logo() {
             className="search-bar"
           />
         </div>
-
         <div className="loginbutt">
           <Link to="/login">
             <button>Login / Sign Up</button>
           </Link>
         </div>
       </header>
-
       <br />
       <hr />
     </>
@@ -127,7 +124,11 @@ const Specialties = () => {
       <h2>Browse by Specialties</h2>
       <div className="specialties-grid">
         {specialties.map((item, index) => (
-          <a key={index} href={item.link} className="specialty-card animated-card">
+          <a
+            key={index}
+            href={item.link}
+            className="specialty-card animated-card"
+          >
             <div className="icon-wrapper">
               <img src={item.icon} alt={item.name} />
             </div>
@@ -140,38 +141,64 @@ const Specialties = () => {
 };
 
 function Why() {
-  const items = [
-    {
-      title: "24x7 Availability",
-      description: "We provide top-notch services with expert staff and great support!",
-    },
-    {
-      title: "Verified Doctors",
-      description: "Get in contact with doctors from our verified sources!",
-    },
-    {
-      title: "Instant Prescription",
-      description: "Get your prescriptions in an instant!",
-    },
-    {
-      title: "Secure Consultation",
-      description:
-        "Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!",
-    },
-  ];
-
   return (
     <>
       <div className="whychoose">
-        <h1 style={{ textAlign: "center" }}>WHY CHOOSE US</h1>
+        <div className="whychoose-h1">
+          <h1 style={{ textAlign: "center" }}>WHY CHOOSE US</h1>
+        </div>
         <br />
         <div className="row">
-          {items.map((item, idx) => (
-            <div className="column" key={idx}>
-              <button className="whychoose-button">{item.title}</button>
-              <div className="hover-panel">{item.description}</div>
-            </div>
-          ))}
+          <div className="column">
+            <ul>
+              <li style={{ listStyle: "disc" }}>
+                <button className="whychoose-button">
+                  24x7 Availability
+                </button>
+                <div className="hover-panel">
+                  We provide top-notch services with expert staff and great support!
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="column">
+            <ul>
+              <li style={{ listStyle: "disc" }}>
+                <button className="whychoose-button">
+                  Verified Doctors
+                </button>
+                <div className="hover-panel">
+                  Get in contact with doctors from our verified sources!
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <ul>
+              <li style={{ listStyle: "disc" }}>
+                <button className="whychoose-button">
+                  Instant Prescription
+                </button>
+                <div className="hover-panel">
+                  Get your prescriptions in an instant!
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="column">
+            <ul>
+              <li style={{ listStyle: "disc" }}>
+                <button className="whychoose-button">
+                  Secure Consultation
+                </button>
+                <div className="hover-panel">
+                  Your health information deserves the highest level of privacy. Speak with trusted professionals, knowing your details remain confidential and safe!
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <hr />
@@ -180,23 +207,19 @@ function Why() {
 }
 
 function Services() {
-  const services = [
-    "Online Consultation",
-    "Lab Test",
-    "Medicine Delivery",
-    "Mental Health and Wellness",
-  ];
-
   return (
     <>
       <div className="service">
         <h1 style={{ textAlign: "center" }}>OUR SERVICES</h1>
         <br />
-        <ul>
-          {services.map((service, index) => (
-            <li key={index}>{service}</li>
-          ))}
-        </ul>
+        <div>
+          <ul>
+            <li>Online Consultation</li>
+            <li>Lab Test</li>
+            <li>Medicine Delivery</li>
+            <li>Mental Health and Wellness</li>
+          </ul>
+        </div>
       </div>
       <hr />
     </>
@@ -204,11 +227,11 @@ function Services() {
 }
 
 function About() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleText = () => setIsOpen(!isOpen);
+  const [isOpen, setIsOpen] = React.useState(false);
 
-  const teamMembers = ["Shila", "Jojo", "Rawnak", "Sudipta", "Mona", "Anup"];
-
+  const toggleText = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <div className="about">
@@ -217,52 +240,57 @@ function About() {
             ABOUT US
           </button>
         </div>
-
-        {isOpen && (
-          <div className="about-content open">
-            <p>
-              Welcome to Online Health Clinic – <br />
-              your trusted destination for accessible, affordable, and expert healthcare at your fingertips.
-              <br />
-              Whether you need a quick consultation, an expert opinion, or access to health records and medicines,
-              we’re here for you 24/7. <br />
-              <b><i>Your health, our priority</i></b>
-            </p>
-
-            <hr />
-            <div className="team-box">MEET OUR TEAM</div>
-
-            <div className="image-row">
-              {teamMembers.map((name, i) => (
-                <div key={i} className="image-wrapper">
-                  <img src={ca} alt={`Team ${name}`} className="side-image" />
-                  <span className="image-caption">{name}</span>
-                </div>
-              ))}
+        <div className={`about-content ${isOpen ? 'open' : ''}`}>
+          Welcome to Online Health Clinic – <br />
+          your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br />
+          At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br />
+          experienced doctors, specialists, and medical services—all from the comfort of your home. <br />
+          Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br />
+          we’re here for you 24/7. Driven by technology and compassion, we aim to bring quality care to every corner<br />
+          of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br />
+          <b><i>Your health, our priority</i></b>
+          <br />
+          <br />
+          <hr />
+          <div className="team-box">MEET OUR TEAM</div>
+          <div className="image-row">
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 1" className="side-image" />
+              <span className="image-caption">Shila</span>
             </div>
-
-            <hr />
-            <div className="team-box">Contact Us</div>
-
-            <div className="contact-icons">
-              <img src={ph} alt="Phone" className="contact-image" />
-              <img src={f} alt="Facebook" className="contact-image" />
-              <img src={insta} alt="Instagram" className="contact-image" />
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 2" className="side-image" />
+              <span className="image-caption">Jojo</span>
+            </div>
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 3" className="side-image" />
+              <span className="image-caption">Rawnak</span>
+            </div>
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 4" className="side-image" />
+              <span className="image-caption">Sudipta</span>
+            </div>
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 5" className="side-image" />
+              <span className="image-caption">Mona</span>
+            </div>
+            <div className="image-wrapper">
+              <img src={ca} alt="Image 6" className="side-image" />
+              <span className="image-caption">Anup</span>
             </div>
           </div>
-        )}
+          <hr />
+          <div className="team-box">Contact Us</div>
+          <div className="contact-icons">
+            <img src={ph} alt="contact" className="contact-image" />
+            <img src={f} alt="sad" className="contact-image" />
+            <img src={insta} alt="contact" className="contact-image" />
+          </div>
+        </div>
       </div>
       <hr />
     </>
   );
 }
 
-export {
-  Main_logo,
-  Nav,
-  CarouselComponent,
-  Specialties,
-  Why,
-  About,
-  Services,
-};
+export { Main_logo, Nav, CarouselComponent, Specialties, Why, About, Services };
