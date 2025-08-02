@@ -287,3 +287,8 @@ li:hover .hover-panel,
 .whychoose-button:hover {
   background-color: #4650e7;
 }
+.whychoose-h1{
+    background-image: linear-gradient(rgb(5, 188, 255), rgb(88, 205, 154));
+    color: transparent;
+    background-clip: text;
+}
