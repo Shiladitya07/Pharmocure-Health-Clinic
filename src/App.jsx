@@ -12,8 +12,8 @@ const Home = () => (
     <Nav />
     <CarouselComponent />
     <Specialties />
-    <Why />
     <Service />
+    <Why />
     <About />
     <Chatbot />
   </>

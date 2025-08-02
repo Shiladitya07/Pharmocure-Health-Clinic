@@ -162,8 +162,8 @@ buttonn:active {
 
 .carousel-img {
   width: 100%;
-  height: 500px;
-  object-fit: fill;
+  height: 600px;
+  object-fit: cover ;
 }
 
 .carousel .legend {
@@ -292,3 +292,4 @@ li:hover .hover-panel,
     color: transparent;
     background-clip: text;
 }
+/* button-73 */

@@ -7,9 +7,9 @@
 .button-73 {
   appearance: none;
   background-color: #ffffff;
-  border-radius: 40em;
+  border-radius: 20px;
   border-style: none;
-  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-shadow: hwb(159 87% 8%) 0 -5px 6px inset;
   box-sizing: border-box;
   color: #000000;
   cursor: pointer;
@@ -31,7 +31,7 @@
 }
 
 .button-73:hover {
-  background-color: #2cb6f1;
+  background-color: hwb(126 27% 4%);
   box-shadow: #03e2d7 0 -6px 8px inset;
   transform: scale(1.125);
 }

@@ -234,6 +234,7 @@ function About() {
   };
   return (
     <>
+      <br></br>
       <div className="about">
         <div className="button-container">
           <button className="button-73" onClick={toggleText}>
