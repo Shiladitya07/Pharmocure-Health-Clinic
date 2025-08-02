@@ -251,32 +251,9 @@ function About() {
           <b><i>Your health, our priority</i></b>
           <br />
           <br />
-          <hr />
-          <div className="team-box">MEET OUR TEAM</div>
-          <div className="image-row">
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 1" className="side-image" />
-              <span className="image-caption">Shila</span>
-            </div>
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 2" className="side-image" />
-              <span className="image-caption">Jojo</span>
-            </div>
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 3" className="side-image" />
-              <span className="image-caption">Rawnak</span>
-            </div>
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 4" className="side-image" />
-              <span className="image-caption">Sudipta</span>
-            </div>
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 5" className="side-image" />
-              <span className="image-caption">Mona</span>
-            </div>
-            <div className="image-wrapper">
-              <img src={ca} alt="Image 6" className="side-image" />
-              <span className="image-caption">Anup</span>
+          
+          
+              
             </div>
           </div>
           <hr />
@@ -286,8 +263,8 @@ function About() {
             <img src={f} alt="sad" className="contact-image" />
             <img src={insta} alt="contact" className="contact-image" />
           </div>
-        </div>
-      </div>
+        
+      
       <hr />
     </>
   );
