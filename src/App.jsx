@@ -21,7 +21,7 @@ const Home = () => (
     <Chatbot />
     {/* <Sidebar />
     <Navbar /> */}
-    <Dashboard />
+    
   </>
 );
 
