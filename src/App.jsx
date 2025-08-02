@@ -4,6 +4,8 @@ import Login from "./pages/login";
 import Registration from "./pages/registration";
 import Service from './pages/service';
 import Chatbot from "./components/chatbot";
+import Sidebar from "./pages/sidebar";
+import Navbar from "./pages/navbar";
 
 // Home page component (for "/")
 const Home = () => (
@@ -16,6 +18,8 @@ const Home = () => (
     <Why />
     <About />
     <Chatbot />
+    {/* <Sidebar />
+    <Navbar /> */}
   </>
 );
 
