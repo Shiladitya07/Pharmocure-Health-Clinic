@@ -1,63 +1,64 @@
-import React from "react"
-import "../assets/styles/home.css"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
-import Book from "../assets/images/Book Appointment.jpg"
-import Consulta from "../assets/images/Best Consultation.jpg"
-import Instantp from "../assets/images/Instant Prescription.jpg"
-import "../assets/styles/specialties.css"
-import Gyno from "../assets/images/gyneaco.png"
-import Neu from "../assets/images/neurology.png"
-import Ortho from "../assets/images/orthopedic.png"
-import Dent from "../assets/images/dentist.png"
-import Derma from "../assets/images/derma.png"
-import Gastro from "../assets/images/gastro.png"
-import Pidea from "../assets/images/pedia.png"
-import Genaral from "../assets/images/consult.png"
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Login from "./login";import Background from "../assets/images/background.jpg"
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "../assets/styles/home.css";
+import "../assets/styles/specialties.css";
 
-
-
+// Images
+import Book from "../assets/images/Book Appointment.jpg";
+import Consulta from "../assets/images/Best Consultation.jpg";
+import Instantp from "../assets/images/Instant Prescription.jpg";
+import Gyno from "../assets/images/gyneaco.png";
+import Neu from "../assets/images/neurology.png";
+import Ortho from "../assets/images/orthopedic.png";
+import Dent from "../assets/images/dentist.png";
+import Derma from "../assets/images/derma.png";
+import Gastro from "../assets/images/gastro.png";
+import Pidea from "../assets/images/pedia.png";
+import Genaral from "../assets/images/consult.png";
+import ca from "../assets/images/ca.jpeg";
+import ph from "../assets/images/ph.png";
+import f from "../assets/images/f.png";
+import insta from "../assets/images/insta.png";
 
 function Main_logo() {
- 
-
   return (
     <>
-         <header>
-          <div className="logo">
-            <h1>
-              <Link
-                to="/"
-                className="home-link"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              >
-                ONLINE HEALTH CLINIC
-              </Link>
+      <header>
+        <div className="logo">
+          <h1>
+            <Link
+              to="/"
+              className="home-link"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              ONLINE HEALTH CLINIC
+            </Link>
+          </h1>
+        </div>
 
-            </h1>
-          </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search Doctors, Specialities, Conditions etc."
+            className="search-bar"
+          />
+        </div>
 
-          <div className="search">
-            <input
-              type="text"
-              placeholder="Search Doctors, Specialities, Conditions etc."
-              className="search-bar"
-            />
-          </div>
         <div className="loginbutt">
           <Link to="/login">
             <button>Login / Sign Up</button>
           </Link>
         </div>
-       </header>
-       <br></br>
-       <hr></hr> 
-    
+      </header>
+
+      <br />
+      <hr />
     </>
-  )
+  );
 }
+
 function Nav() {
   const navItems = [
     { label: "Buy Medicine", icon: "💊" },
@@ -80,7 +81,6 @@ function Nav() {
     </>
   );
 }
-
 
 const CarouselComponent = () => {
   return (
@@ -110,10 +110,6 @@ const CarouselComponent = () => {
   );
 };
 
-
-// specialitis//
-
-
 const specialties = [
   { name: "General Physician", icon: Genaral, link: "/specialists/general" },
   { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
@@ -125,18 +121,13 @@ const specialties = [
   { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
 ];
 
-
 const Specialties = () => {
   return (
     <div className="specialties-section">
       <h2>Browse by Specialties</h2>
       <div className="specialties-grid">
         {specialties.map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            className="specialty-card animated-card"
-          >
+          <a key={index} href={item.link} className="specialty-card animated-card">
             <div className="icon-wrapper">
               <img src={item.icon} alt={item.name} />
             </div>
@@ -149,153 +140,129 @@ const Specialties = () => {
 };
 
 function Why() {
+  const items = [
+    {
+      title: "24x7 Availability",
+      description: "We provide top-notch services with expert staff and great support!",
+    },
+    {
+      title: "Verified Doctors",
+      description: "Get in contact with doctors from our verified sources!",
+    },
+    {
+      title: "Instant Prescription",
+      description: "Get your prescriptions in an instant!",
+    },
+    {
+      title: "Secure Consultation",
+      description:
+        "Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!",
+    },
+  ];
+
   return (
     <>
       <div className="whychoose">
-      <div className="whychoose-h1">
         <h1 style={{ textAlign: "center" }}>WHY CHOOSE US</h1>
-          </div>
-          <br></br>
-          <div className="row">
-            <div className="column">
-            <a>
-                <ul>
-                  <li>
-                    <button className="whychoose-button">
-                    24x7 Availability
-                    </button>
-                    <div className="hover-panel">We provide top-notch services with expert staff and great support!</div>
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    <button className="whychoose-button">
-                    Verified Doctors
-                    </button>
-                    <div className="hover-panel">Get in contact with doctors from our verified sources!</div>
-                  </li>
-                </ul>
-              </a>
-          </div>
-          </div>
-          <div className="row">
-            <div className="column">
-            <a>
-                <ul>
-                  <li>
-                  <button className="whychoose-button">
-                    Instant Prescription
-                  </button>
-                  <div className="hover-panel">Get your prescriptions in an instant!</div>
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                  <button className="whychoose-button">
-                    Secure Consultation
-                  </button>
-                  <div className="hover-panel">Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!</div>
-                  </li>
-                </ul>
-              </a>
-              </div>
+        <br />
+        <div className="row">
+          {items.map((item, idx) => (
+            <div className="column" key={idx}>
+              <button className="whychoose-button">{item.title}</button>
+              <div className="hover-panel">{item.description}</div>
             </div>
-            </div>
-      <hr></hr>
+          ))}
+        </div>
+      </div>
+      <hr />
     </>
-  )
+  );
 }
-function Services(){
+
+function Services() {
+  const services = [
+    "Online Consultation",
+    "Lab Test",
+    "Medicine Delivery",
+    "Mental Health and Wellness",
+  ];
+
   return (
     <>
       <div className="service">
         <h1 style={{ textAlign: "center" }}>OUR SERVICES</h1>
-          <br></br>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Online Consultation
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Lab Test
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Medicine Delivery
-                  </li>
-                </ul>
-              </a>
-          </div>
-          <div>
-            <a>
-                <ul>
-                  <li>
-                    Mental Health and Wellnesss
-                  </li>
-                </ul>
-              </a>
-          </div>
+        <br />
+        <ul>
+          {services.map((service, index) => (
+            <li key={index}>{service}</li>
+          ))}
+        </ul>
       </div>
-      <hr></hr>
+      <hr />
     </>
-    
-  )
+  );
 }
-function About(){
+
+function About() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleText = () => setIsOpen(!isOpen);
+
+  const teamMembers = ["Shila", "Jojo", "Rawnak", "Sudipta", "Mona", "Anup"];
+
   return (
     <>
-      <div className="service">
-        
-          <h1>ABOUT US</h1>
-          
-          <br></br>
-          
-           
-             
-                Welcome to Online Health Clinic – <br></br>
-                your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br></br>
-                At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br></br>
-                experienced doctors, specialists, and medical services—all from the comfort of your home. <br></br>
-                Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br></br>
-                we’re here for you 24/7.Driven by technology and compassion, we aim to bring quality care to every corner<br></br>
-                of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br></br>
-                <b><i>Your health, our priority</i></b>
-          
-          
-            <br></br>
-          
-          <div>
-            <a>
-                    Contact us
-              </a>
+      <div className="about">
+        <div className="button-container">
+          <button className="button-73" onClick={toggleText}>
+            ABOUT US
+          </button>
+        </div>
+
+        {isOpen && (
+          <div className="about-content open">
+            <p>
+              Welcome to Online Health Clinic – <br />
+              your trusted destination for accessible, affordable, and expert healthcare at your fingertips.
+              <br />
+              Whether you need a quick consultation, an expert opinion, or access to health records and medicines,
+              we’re here for you 24/7. <br />
+              <b><i>Your health, our priority</i></b>
+            </p>
+
+            <hr />
+            <div className="team-box">MEET OUR TEAM</div>
+
+            <div className="image-row">
+              {teamMembers.map((name, i) => (
+                <div key={i} className="image-wrapper">
+                  <img src={ca} alt={`Team ${name}`} className="side-image" />
+                  <span className="image-caption">{name}</span>
+                </div>
+              ))}
+            </div>
+
+            <hr />
+            <div className="team-box">Contact Us</div>
+
+            <div className="contact-icons">
+              <img src={ph} alt="Phone" className="contact-image" />
+              <img src={f} alt="Facebook" className="contact-image" />
+              <img src={insta} alt="Instagram" className="contact-image" />
+            </div>
           </div>
+        )}
       </div>
-      <hr></hr>
+      <hr />
     </>
-    
-  )
+  );
 }
 
-
-export {Main_logo,Nav,CarouselComponent,Specialties,Why,About,Services,};
-
+export {
+  Main_logo,
+  Nav,
+  CarouselComponent,
+  Specialties,
+  Why,
+  About,
+  Services,
+};
