@@ -6,6 +6,7 @@ import Service from './pages/service';
 import Chatbot from "./components/chatbot";
 import Sidebar from "./pages/sidebar";
 import Navbar from "./pages/navbar";
+import Dashboard from "./pages/dashboard";
 
 // Home page component (for "/")
 const Home = () => (
@@ -20,6 +21,7 @@ const Home = () => (
     <Chatbot />
     {/* <Sidebar />
     <Navbar /> */}
+    <Dashboard />
   </>
 );
 
@@ -29,6 +31,7 @@ function App() {
       <Route path="/" element={<Home />} />          {/* Renders homepage components */}
       <Route path="/login" element={<Login />} />    {/* Renders login page only */}
       <Route path="/registration" element={<Registration />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 }
