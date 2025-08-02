@@ -1,4 +1,5 @@
-import React from "react"
+
+import React, { useState } from 'react';
 import "../assets/styles/home.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -14,8 +15,12 @@ import Derma from "../assets/images/derma.png"
 import Gastro from "../assets/images/gastro.png"
 import Pidea from "../assets/images/pedia.png"
 import Genaral from "../assets/images/consult.png"
-import { Link } from 'react-router-dom';
-
+import ca from "../assets/images/ca.jpeg"
+import { Link } from "react-router-dom";
+import Login from "./login";import Background from "../assets/images/background.jpg"
+import ph from "../assets/images/ph.png"
+import f from "../assets/images/f.png"
+import insta from "../assets/images/insta.png"
 
 
 function Main_logo() {
@@ -44,15 +49,14 @@ function Main_logo() {
               className="search-bar"
             />
           </div>
-
-          <div className="loginbutt">
-            <button className="login-btn">Login / Sign Up</button>
-            </div>
-          </header>
-
-
-        <br></br>
-        <hr></hr> 
+        <div className="loginbutt">
+          <Link to="/login">
+            <button>Login / Sign Up</button>
+          </Link>
+        </div>
+       </header>
+       <br></br>
+       <hr></hr> 
     
     </>
   )
@@ -151,15 +155,19 @@ function Why() {
   return (
     <>
       <div className="whychoose">
-        <center>
-          <h1>WHY CHOOSE US</h1>
-          </center>
+      <div className="whychoose-h1">
+        <h1 style={{ textAlign: "center" }}>WHY CHOOSE US</h1>
+          </div>
           <br></br>
-          <div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     24x7 Availability
+                    </button>
+                    <div className="hover-panel">We provide top-notch services with expert staff and great support!</div>
                   </li>
                 </ul>
               </a>
@@ -168,16 +176,24 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                    <button className="whychoose-button">
                     Verified Doctors
+                    </button>
+                    <div className="hover-panel">Get in contact with doctors from our verified sources!</div>
                   </li>
                 </ul>
               </a>
           </div>
-          <div>
+          </div>
+          <div className="row">
+            <div className="column">
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Instant Prescription
+                  </button>
+                  <div className="hover-panel">Get your prescriptions in an instant!</div>
                   </li>
                 </ul>
               </a>
@@ -186,12 +202,16 @@ function Why() {
             <a>
                 <ul>
                   <li>
+                  <button className="whychoose-button">
                     Secure Consultation
+                  </button>
+                  <div className="hover-panel">Your health information deserves the highest level of privacy. Our consultations are conducted over secure, encrypted platforms in compliance with medical data protection standards. Speak with trusted professionals, knowing your details remain confidential and safe!</div>
                   </li>
                 </ul>
               </a>
-          </div>
-      </div>
+              </div>
+            </div>
+            </div>
       <hr></hr>
     </>
   )
@@ -200,9 +220,7 @@ function Services(){
   return (
     <>
       <div className="service">
-        <center>
-          <h1>OUR SERVICES</h1>
-          </center>
+        <h1 style={{ textAlign: "center" }}>OUR SERVICES</h1>
           <br></br>
           <div>
             <a>
@@ -247,38 +265,94 @@ function Services(){
   )
 }
 function About(){
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleText = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
-      <div className="service">
-        <center>
-          <h1>ABOUT US</h1>
-          </center>
-          <br></br>
-          <p>
-           <center>
-             
-                Welcome to Online Health Clinic – <br></br>
-                your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br></br>
-                At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br></br>
-                experienced doctors, specialists, and medical services—all from the comfort of your home. <br></br>
-                Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br></br>
-                we’re here for you 24/7.Driven by technology and compassion, we aim to bring quality care to every corner<br></br>
-                of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br></br>
-                <b><i>Your health, our priority</i></b>
+      <div className="about">
+        <div className="button-container">
+          <button className="button-73" onClick={toggleText}>
+            ABOUT US
+          </button>
+        </div>
+
+        {/* Collapsible content */}
+        <div className={`about-content ${isOpen ? 'open' : ''}`}>
           
-           </center>
-            <br></br>
-          </p>
-          <div>
-            <a>
-                    Contact us
-              </a>
+            Welcome to Online Health Clinic – <br />
+            your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br />
+            At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br />
+            experienced doctors, specialists, and medical services—all from the comfort of your home. <br />
+            Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br />
+            we’re here for you 24/7. Driven by technology and compassion, we aim to bring quality care to every corner<br />
+            of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br />
+            <b><i>Your health, our priority</i></b>
+            <br/>
+
+            <br/>
+
+
+            <hr/>
+              <div/>
+
+
+             <div className="team-box">
+              MEET OUR TEAM
+              </div>
+
+
+            <div className="image-row">
+            <div className="image-wrapper">
+             <img src={ca} alt="Image 1" className="side-image" />
+            <span className="image-caption">Shila</span>
+            </div>
+            <div className="image-wrapper">
+            <img src={ca} alt="Image 2" className="side-image" />
+            <span className="image-caption">Jojo</span>
+            </div>
+            <div className="image-wrapper">
+            <img src={ca} alt="Image 3" className="side-image" />
+            <span className="image-caption">Rawnak</span>
+            </div>
+            <div className="image-wrapper">
+            <img src={ca} alt="Image 4" className="side-image" />
+            <span className="image-caption">Sudipta</span>
+            </div>
+            <div className="image-wrapper">
+            <img src={ca} alt="Image 5" className="side-image" />
+            <span className="image-caption">Mona</span>
+            </div>
+            <div className="image-wrapper">
+            <img src={ca} alt="Image 6" className="side-image" />
+             <span className="image-caption">Anup</span>
+            </div>
           </div>
+          <hr/>
+
+             
+            
+
+
+          <div className={`about-content ${isOpen ? 'open' : ''}`}>
+          <div className="team-box">
+              Contact Us
+              
+              </div>
+
+        </div>
+         <div className="contact-icons">
+              <img src={ph} alt= "contact" className="contact-image" />
+          <img src={f} alt= "sad" className="contact-image" />
+          <img src={insta} alt= "contact" className="contact-image" />
       </div>
-      <hr></hr>
+      </div>
+      </div>
+      <hr />
     </>
-    
-  )
+  );
 }
 
 
