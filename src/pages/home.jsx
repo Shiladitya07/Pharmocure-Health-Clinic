@@ -58,21 +58,31 @@ function Main_logo() {
 
 function Nav() {
   const navItems = [
-    { label: "Buy Medicine", icon: "💊" },
-    { label: "Book Appointment", icon: "📅" },
-    { label: "Consultation", icon: "🩺" },
-    { label: "Health Records", icon: "📁" },
+    { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
+    { label: "Book Appointment", icon: "📅", link: "#" },
+    { label: "Consultation", icon: "🩺", link: "#" },
+    { label: "Health Records", icon: "📁", link: "#" },
   ];
 
   return (
     <>
       <nav className="nav-section">
-        {navItems.map((item, index) => (
-          <div className="nav-card" key={index}>
-            <div className="nav-icon">{item.icon}</div>
-            <div className="nav-label">{item.label}</div>
-          </div>
-        ))}
+        {navItems.map((item, index) =>
+          item.link && item.link !== "#" ? (
+            <Link to={item.link} key={index} className="nav-card-link">
+
+  <div className="nav-card">
+    <div className="nav-icon">{item.icon}</div>
+    <div className="nav-label">{item.label}</div>
+  </div>
+</Link>
+          ) : (
+            <div className="nav-card" key={index}>
+              <div className="nav-icon">{item.icon}</div>
+              <div className="nav-label">{item.label}</div>
+            </div>
+          )
+        )}
       </nav>
       <hr />
     </>
@@ -271,4 +281,13 @@ function About() {
   );
 }
 
-export { Main_logo, Nav, CarouselComponent, Specialties, Why, About, Services };
+const BuyMedicinePage = () => (
+  <>
+    <Main_logo />
+    <Nav />
+    <CarouselComponent />
+    <Specialties />
+  </>  
+);
+
+export { Main_logo, Nav, CarouselComponent, Specialties, Why, About, Services,BuyMedicinePage };

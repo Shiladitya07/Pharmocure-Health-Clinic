@@ -210,7 +210,11 @@ buttonn:active {
   font-weight: 600;
   color: #333;
 }
-/* ...existing code... */
+.nav-card-link {
+  text-decoration: none;
+}
+
+/* ---------------- WHY CHOOSE US SECTION ---------------- */
 
 .row {
   display: flex;

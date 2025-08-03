@@ -7,7 +7,7 @@ import Chatbot from "./components/chatbot";
 import Sidebar from "./pages/sidebar";
 import Navbar from "./pages/navbar";
 import Dashboard from "./pages/dashboard";
-
+import { default as BuyMedicine } from "./pages/buymedicine";
 // Home page component (for "/")
 const Home = () => (
   <>
@@ -20,8 +20,7 @@ const Home = () => (
     <About />
     <Chatbot />
     {/* <Sidebar />
-    <Navbar /> */}
-    
+    <Navbar /> */} 
   </>
 );
 
@@ -32,6 +31,7 @@ function App() {
       <Route path="/login" element={<Login />} />    {/* Renders login page only */}
       <Route path="/registration" element={<Registration />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/buymedicine" element={<BuyMedicine />} />
     </Routes>
   );
 }
