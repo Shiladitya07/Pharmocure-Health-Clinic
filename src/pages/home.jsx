@@ -46,7 +46,7 @@ function Main_logo() {
         </div>
         <div className="loginbutt">
           <Link to="/login">
-            <buttonn>Login / Sign Up</buttonn>
+            <button className='buttonn'>Login / Sign Up</button>
           </Link>
         </div>
       </header>

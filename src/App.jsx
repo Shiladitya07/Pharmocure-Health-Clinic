@@ -30,7 +30,7 @@ function App() {
       <Route path="/" element={<Home />} />          {/* Renders homepage components */}
       <Route path="/login" element={<Login />} />    {/* Renders login page only */}
       <Route path="/registration" element={<Registration />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/admin" element={<Dashboard />} />
       <Route path="/buymedicine" element={<BuyMedicine />} />
     </Routes>
   );

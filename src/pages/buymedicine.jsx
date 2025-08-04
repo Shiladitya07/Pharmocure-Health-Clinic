@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -21,7 +21,10 @@ import ca from "../assets/images/ca.jpeg";
 import ph from "../assets/images/ph.png";
 import f from "../assets/images/f.png";
 import insta from "../assets/images/insta.png";
-import Coal from "../assets/images/charcoal.jpg";
+import Aqua from "../assets/images/charcoal.jpg";
+import Coal from "../assets/images/char.webp"; 
+import Lacto from "../assets/images/lacto.webp";
+import Loreal from "../assets/images/loreal.webp";
 
 function Main_logo() {
   return (
@@ -47,7 +50,7 @@ function Main_logo() {
         </div>
         <div className="loginbutt">
           <Link to="/login">
-            <buttonn>Login / Sign Up</buttonn>
+            <button className="buttonn">Login / Sign Up</button>
           </Link>
         </div>
       </header>
@@ -143,47 +146,103 @@ const Specialties = () => {
 
 
 const DealsSection = () => {
+  const [activeTab, setActiveTab] = useState("Value Deals");
+
+  const tabs = ["Value Deals", "50% Off",];
+
   const products = [
     {
+      title: "Essentials Aqua Blue Hand Wash",
+      img: Aqua,
+      price: "₹99.2",
+      discount: "38% off",
+      label: "Bestseller",
+      category: "Value Deals"
+    },
+    {
+      title: "Chaarcoal Soap",
+      img: Coal,
+      price: "₹99.2",
+      discount: "38% off",
+      label: "Bestseller",
+      category: "Value Deals"
+    },
+     {
+      title: "Lacto Calamine SPF 50 PA+++ UVA/UVB Sunscreen Lotion, 50 gm",
+      img: Lacto,
+      price: "₹99.2",
+      discount: "38% off",
+      label: "Bestseller",
+      category: "Value Deals"
+    },
+     {
+      title: "Apollo Essentials Aqua Blue Hand Wash",
+      img: Loreal,
+      price: "₹99.2",
+      discount: "38% off",
+      label: "Bestseller",
+      category: "Value Deals"
+    },
+     {
       title: "Apollo Essentials Aqua Blue Hand Wash",
       img: Coal,
       price: "₹99.2",
       discount: "38% off",
-      label: "Bestseller"
+      label: "Bestseller",
+      category: "Value Deals"
     },
-    {
-      title: "Activated Charcoal Soap",
-      img: "https://cdn01.pharmeasy.in/dam/products_otc/N09609/apollo-pharmacy-activated-charcoal-soap-250gm-pack-of-2-2-1671743340.jpg",
+     {
+      title: "Apollo Essentials Aqua Blue Hand Wash",
+      img: Coal,
       price: "₹99.2",
       discount: "38% off",
-      label: "Buy 1 Get 1"
+      label: "Bestseller",
+      category: "Value Deals"
     },
-    {
-      title: "Apollo Life Citrus Wet Wipes",
-      img: "https://cdn01.pharmeasy.in/dam/products_otc/F63371/apollo-life-premium-citrus-refreshing-wet-wipes-60s-2-1671742521.jpg",
+     {
+      title: "Apollo Essentials Aqua Blue Hand Wash",
+      img: Coal,
       price: "₹99.2",
       discount: "38% off",
-      label: "Buy 1 Get 1"
+      label: "Bestseller",
+      category: "Value Deals"
     },
+
+    
+    // Add rest of products...
   ];
+
+  const filteredProducts = products.filter(p => p.category === activeTab);
 
   return (
     <div className="deals-section">
-      <h2>💊 Value Deals at ₹100</h2>
+      <h2>💊 Value Deals at Best Price</h2>
+      <div className="tabs">
+        {tabs.map(tab => (
+          <button
+            key={tab}
+            className={activeTab === tab ? "tab active" : "tab"}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
       <div className="deals-grid">
-        {products.map((item, index) => (
+        {filteredProducts.map((item, index) => (
           <div key={index} className="deal-card">
             <div className="tag">{item.label}</div>
             <img src={item.img} alt={item.title} />
-            <p>{item.title}</p>
+            <p className="deal-title">{item.title}</p>
             <p className="price">{item.price} <span>{item.discount}</span></p>
-            <button>ADD</button>
+            <button className="add-button">ADD</button>
           </div>
         ))}
       </div>
     </div>
   );
 };
+
 
 const BuyMedicinePage = () => (
   <>
