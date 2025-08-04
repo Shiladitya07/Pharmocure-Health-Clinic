@@ -1,0 +1,82 @@
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* force 2 columns */
+  gap: 20px;
+}
+
+/* Make it stack 1 per row on small screens */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #75f4bd;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(138, 230, 8, 0.1);
+  gap: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease  background-color 0.2s ease;
+
+}
+
+/* ✅ Card hover effect */
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(212, 235, 4, 0.2);
+  background-color: #53f39e; /* Change to a deeper turquoise or your choice */
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* ✅ Link hover effect */
+.contact-info a {
+  margin-top: 8px;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #0056d2;
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.contact-info a:hover 
+{
+  color: #003399;
+
+}
+
+.contact-card:hover {
+  box-shadow: 0 0 10px #00f0f0, 0 0 20px #00f0f0;
+}

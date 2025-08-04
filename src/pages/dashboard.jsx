@@ -3,6 +3,8 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell
 } from 'recharts'
+import Sidebar from './sidebar'
+import Navbar from './navbar'
 
 // Sample data for monthly patient registrations
 const patientData = [
@@ -46,6 +48,7 @@ const Dashboard = () => (
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
+            
             <Legend verticalAlign="bottom" align="center" layout="horizontal" />
             <Line type="monotone" dataKey="registrations" name="REGISTRATION" stroke="#8884d8" strokeWidth={3} />
         </LineChart>

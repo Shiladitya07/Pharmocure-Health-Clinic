@@ -210,6 +210,20 @@ header {
   font-weight: 600;
   color: #333;
 }
+.nav-card-link {
+  text-decoration: none;
+}
+
+.nav-card-link .nav-label {
+  text-decoration: none;
+}
+
+/* Optional: If you want it to look active when you're on /buymedicine */
+.nav-card.active {
+  background-color: #e6f7f0;
+  border: 2px solid #00a67c;
+  box-shadow: 0 0 10px rgba(0, 166, 124, 0.2);
+}
 
 
 /* ---------------- WHY CHOOSE US SECTION ---------------- */

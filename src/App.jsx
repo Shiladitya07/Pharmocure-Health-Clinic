@@ -8,6 +8,8 @@ import Sidebar from "./pages/sidebar";
 import Navbar from "./pages/navbar";
 import Dashboard from "./pages/dashboard";
 import { default as BuyMedicine } from "./pages/buymedicine";
+import BookAppointment from "./pages/bookappointment";
+import ContactOptions from "./pages/contact";
 // Home page component (for "/")
 const Home = () => (
   <>
@@ -19,6 +21,7 @@ const Home = () => (
     <Why />
     <About />
     <Chatbot />
+    <ContactOptions />
     {/* <Sidebar />
     <Navbar /> */} 
   </>
@@ -32,6 +35,7 @@ function App() {
       <Route path="/registration" element={<Registration />} />
       <Route path="/admin" element={<Dashboard />} />
       <Route path="/buymedicine" element={<BuyMedicine />} />
+      <Route path="/bookappointment" element={<BookAppointment />} />
     </Routes>
   );
 }

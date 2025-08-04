@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLocation,Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
+
 // Images
-import Book from "../assets/images/Book Appointment.jpg";
-import Consulta from "../assets/images/Best Consultation.jpg";
-import Instantp from "../assets/images/Instant Prescription.jpg";
 import Gyno from "../assets/images/gyneaco.png";
 import Neu from "../assets/images/neurology.png";
 import Ortho from "../assets/images/orthopedic.png";
@@ -17,36 +15,58 @@ import Derma from "../assets/images/derma.png";
 import Gastro from "../assets/images/gastro.png";
 import Pidea from "../assets/images/pedia.png";
 import Genaral from "../assets/images/consult.png";
-import ca from "../assets/images/ca.jpeg";
-import ph from "../assets/images/ph.png";
-import f from "../assets/images/f.png";
-import insta from "../assets/images/insta.png";
+import Banner from "../assets/images/banner1.jpg";
+import Banner2 from "../assets/images/banner2.jpg";
+import Banner3 from "../assets/images/banner3.jpg";
 import Aqua from "../assets/images/charcoal.jpg";
-import Coal from "../assets/images/char.webp"; 
+import Coal from "../assets/images/char.webp";
 import Lacto from "../assets/images/lacto.webp";
-import Loreal from "../assets/images/loreal.webp";
-
+import ca from "../assets/images/ca.jpeg";
+import img1 from "../assets/images/img1.png";   
+import img2 from "../assets/images/img2.png";   
+import img3 from "../assets/images/img3.png";   
+import img4 from "../assets/images/img4.png";
+import img5 from "../assets/images/img5.png";
+import img6 from "../assets/images/img6.png";
+import img7 from "../assets/images/img7.png";
+import img8 from "../assets/images/img8.png";
+import img9 from "../assets/images/img9.png";
+import img10 from "../assets/images/img10.png";
+import img11 from "../assets/images/img11.png";
+import img12 from "../assets/images/img12.png";
+import img13 from "../assets/images/img13.png";
+import img14 from "../assets/images/img14.png";
+import img15 from "../assets/images/img15.png";
+import img16 from "../assets/images/img16.png";
+import img17 from "../assets/images/img17.png";
+import img18 from "../assets/images/img18.png";
+import img19 from "../assets/images/img19.png";
+import img20 from "../assets/images/img20.png";
+import img21 from "../assets/images/img21.png";
+import img22 from "../assets/images/img22.png";
+import img23 from "../assets/images/img23.png";
+import img24 from "../assets/images/img24.png";
+import img25 from "../assets/images/img25.png";
+import img26 from "../assets/images/img26.png";
+import img27 from "../assets/images/img27.png";
+import img28 from "../assets/images/img28.png";
+import img29 from "../assets/images/img29.png";
+import img30 from "../assets/images/img30.png";
+import img31 from "../assets/images/img31.png"; // Dr. Morepen Gluco One BG-03 Blood Glucose Test Strips
+import ContactOptions from "./contact";
 function Main_logo() {
   return (
     <>
       <header>
         <div className="logo">
           <h1>
-            <Link
-              to="/"
-              className="home-link"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
+            <Link to="/" className="home-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               ONLINE HEALTH CLINIC
             </Link>
           </h1>
         </div>
         <div className="search">
-          <input
-            type="text"
-            placeholder="Search Doctors, Specialities, Conditions etc."
-            className="search-bar"
-          />
+          <input type="text" placeholder="Search Doctors, Specialities, Conditions etc." className="search-bar" />
         </div>
         <div className="loginbutt">
           <Link to="/login">
@@ -61,55 +81,33 @@ function Main_logo() {
 }
 
 function Nav() {
+  const location = useLocation();
+
   const navItems = [
-    { label: "Buy Medicine", icon: "💊" },
-    { label: "Book Appointment", icon: "📅" },
-    { label: "Consultation", icon: "🩺" },
-    { label: "Health Records", icon: "📁" },
+    { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
+    { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
+    { label: "Consultation", icon: "🩺", link: "/consultation" },
+    { label: "Health Records", icon: "📁", link: "/healthrecords" },
   ];
 
   return (
     <>
       <nav className="nav-section">
-        {navItems.map((item, index) => (
-          <div className="nav-card" key={index}>
-            <div className="nav-icon">{item.icon}</div>
-            <div className="nav-label">{item.label}</div>
-          </div>
-        ))}
+        {navItems.map((item, index) => {
+          const isActive = location.pathname === item.link;
+          return (
+            <Link to={item.link} key={index} className={`nav-card ${isActive ? "active" : ""}`}>
+              <div className="nav-icon">{item.icon}</div>
+              <div className="nav-label">{item.label}</div>
+            </Link>
+          );
+        })}
       </nav>
       <hr />
     </>
   );
 }
 
-const CarouselComponent = () => {
-  return (
-    <div className="carousel-wrapper">
-      <Carousel
-        autoPlay
-        infiniteLoop
-        showArrows
-        showThumbs={false}
-        showStatus={false}
-        dynamicHeight={false}
-      >
-        <div>
-          <img src={Book} alt="Slide 1" className="carousel-img" />
-          <p className="legend">Book Appointment Online</p>
-        </div>
-        <div>
-          <img src={Consulta} alt="Slide 2" className="carousel-img" />
-          <p className="legend">Best Consultation</p>
-        </div>
-        <div>
-          <img src={Instantp} alt="Slide 3" className="carousel-img" />
-          <p className="legend">Instant Prescription</p>
-        </div>
-      </Carousel>
-    </div>
-  );
-};
 
 const specialties = [
   { name: "General Physician", icon: Genaral, link: "/specialists/general" },
@@ -122,97 +120,337 @@ const specialties = [
   { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
 ];
 
-const Specialties = () => {
+const Specialties = () => (
+  <div className="specialties-section">
+    <h2>Browse by Specialties</h2>
+    <div className="specialties-grid">
+      {specialties.map((item, index) => (
+        <a key={index} href={item.link} className="specialty-card animated-card">
+          <div className="icon-wrapper"><img src={item.icon} alt={item.name} /></div>
+          <p>{item.name}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+);
+const CarouselComponent = () => {
   return (
-    <div className="specialties-section">
-      <h2>Browse by Specialties</h2>
-      <div className="specialties-grid">
-        {specialties.map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            className="specialty-card animated-card"
-          >
-            <div className="icon-wrapper">
-              <img src={item.icon} alt={item.name} />
-            </div>
-            <p>{item.name}</p>
-          </a>
-        ))}
-      </div>
+    <div className="carousell-wrapper">
+      <Carousel
+        autoPlay
+        infiniteLoop
+        showArrows
+        showThumbs={false}
+        showStatus={false}
+        dynamicHeight={false}
+      >
+        <div>
+          <img src={Banner} alt="Slide 1" className="carousell-img" />
+         
+        </div>
+        <div>
+          <img src={Banner2} alt="Slide 2" className="carousell-img" />
+       
+        </div>
+        <div>
+          <img src={Banner3} alt="Slide 3" className="carousell-img" />
+
+        </div>
+      </Carousel>
     </div>
   );
 };
-
-
 const DealsSection = () => {
-  const [activeTab, setActiveTab] = useState("Value Deals");
-
-  const tabs = ["Value Deals", "50% Off",];
+  const [activeTab, setActiveTab] = useState("All Deals");
+  const tabs = ["All Deals","45%", "50%", "60%"];
 
   const products = [
     {
       title: "Essentials Aqua Blue Hand Wash",
       img: Aqua,
-      price: "₹99.2",
-      discount: "38% off",
+      price: "₹105",
+      discount: "45% off",
       label: "Bestseller",
-      category: "Value Deals"
+      category: ["All Deals","45%"]
     },
     {
-      title: "Chaarcoal Soap",
+      title: "OneTouch Select Plus Glucometer",
       img: Coal,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+      price: "₹495",
+      discount: "50% off",
+      label: "Limited Time Offer",
+      category: ["All Deals", "50%"]
     },
-     {
-      title: "Lacto Calamine SPF 50 PA+++ UVA/UVB Sunscreen Lotion, 50 gm",
+    {
+      title: "Lacto Calamine SPF 50 Lotion",
       img: Lacto,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+      price: "₹102",
+      discount: "60% off",
+      label: "Buy 2, +2% OFF",
+      category: ["All Deals", "50%", "60%"]
     },
-     {
-      title: "Apollo Essentials Aqua Blue Hand Wash",
-      img: Loreal,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+    {
+      title: "Dr. Ortho Oil",
+      img: ca,
+      price: "₹295",
+      discount: "60% off",
+      label: "Buy 1 Get 1",
+      category: ["All Deals","60%"]
     },
-     {
-      title: "Apollo Essentials Aqua Blue Hand Wash",
-      img: Coal,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+    {
+      title: "Dolo 650 Tablet",
+      img: img1,
+      price: "₹225",
+      discount: "45% off",
+      label: "Bestseller#2",
+      category: ["All Deals", "45%"]
     },
-     {
-      title: "Apollo Essentials Aqua Blue Hand Wash",
-      img: Coal,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+    {
+      title: "Calpol 500 Tablet",
+      img: img2,
+      price: "₹375",
+      discount: "45% off",
+      label: "Limited Offer",
+      category: ["All Deals","45%"]
     },
-     {
-      title: "Apollo Essentials Aqua Blue Hand Wash",
-      img: Coal,
-      price: "₹99.2",
-      discount: "38% off",
-      label: "Bestseller",
-      category: "Value Deals"
+    {
+      title: "Combiflam Tablet",
+      img: img3,
+      price: "₹150",
+      discount: "60% off",
+      label: "Trending",
+      category: ["All Deals","60%"]
     },
+    {
+      title: "Crocin Advance",
+      img: img4,
+      price: "₹325",
+      discount: "25% off",
+      label: "Limited Offer",
+      category: ["All Deals"]
+    },
+    {
+      title: "Himalaya Liv.52 DS Syrup",
+      img: img5,
+      price: "₹349",
+      discount: "60% off",
+      label: "Limited Offer",
+      category: ["All Deals","50%"]
+    },
+    {
+      title: "Sofy Anti Bacteria XL",
+      img: img6,
+      price: "₹450",
+      discount: "25% off",
+      label: "Top Rated",
+      category: ["All Deals","60%"]
+    },
+    {
+    title: "Accu-Chek Active Glucometer",
+    img: img7,
+    price: "₹455",
+    discount: "50% off",
+    label: "New Arrival",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "Revital H Capsules",
+    img: img8,
+    price: "₹349",
+    discount: "45% off",
+    label: "Top Rated",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "Dettol Antiseptic Liquid",
+    img: img9,
+    price: "₹105",
+    discount: "38% off",
+    label: "Buy 1 Get 1",
+    category: "All Deals"
+  },
+  {
+    title: "Savlon Handwash",
+    img: img10,
+    price: "₹105",
+    discount: "60% off",
+    label: "only 2 left",
+    category: ["All Deals","60%"]
+  },
+  {
+    title: "Sugar Free Gold",
+    img: img11,
+    price: "₹450",
+    discount: "25% off",
+    label: "Limited Offer",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "Volini Spray",
+    img: img12,
+    price: "₹225",
+    discount: "30% off",
+    label: "Top Rated",
+    category: "All Deals"
+  },
+  {
+    title: "Moov Pain Relief Cream",
+    img: img13,
+    price: "₹275",
+    discount: "50% off",
+    label: "New Arrival",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "Boroline Antiseptic",
+    img: img14,
+    price: "₹250",
+    discount: "60% off",
+    label: "Limited Offer",
+    category: ["All Deals","60%"]
+  },
+  {
+    title: "Zandu Balm",
+    img: img15,
+    price: "₹475",
+    discount: "60% off",
+    label: "Bestseller",
+    category: ["60%","All Deals"]
+  },
+  {
+    title: "OneTouch Select Glucometer",
+    img: img16,
+    price: "₹325",
+    discount: "30% off",
+    label: "Limited Offer",
+    category: "All Deals"
+  },
+  {
+    title: "Lacto Calamine Lotion",
+    img: img17,
+    price: "₹295",
+    discount: "15% off",
+    label: "Top Rated",
+    category: ["All Deals"]
+  },
+  {
+    title: "Vicks Vaporub",
+    img: img18,
+    price: "₹199",
+    discount: "30% off",
+    label: "Buy 1 Get 1",
+    category: [ "All Deals"]
+  },
+  {
+    title: "Eno Sachet",
+    img: img19,
+    price: "₹349",
+    discount: "60% off",
+    label: "Limited Offer",
+    category: ["All Deals","60%"]
+  },
+  {
+    title: "ORS-Electral Powder",
+    img: img20,
+    price: "₹349",
+    discount: "50% off",
+    label: "New Arrival",
+    category: ["50%","All Deals"]
+  },
+  {
+    title: "Horlicks Health Drink",
+    img: img21,
+    price: "₹225",
+    discount: "10% off",
+    label: "Bestseller",
+    category: [ "All Deals"]
+  },
+  {
+    title: "Ensure Diabetes Care",
+    img: img22,
+    price: "₹199",
+    discount: "50% off",
+    label: "Top Rated",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "Pediasure Premium Chocolate",
+    img: img23,
+    price: "₹250",
+    discount: "10% off",
+    label: "Bestseller",
+    category: "All Deals"
+  },
+  {
+    title: "Bournvita",
+    img: img24,
+    price: "₹200",
+    discount: "45% off",
+    label: "New Arrival",
+    category: ["All Deals","45%"]
+  },
+  {
+    title: "Dabur Chyawanprash",
+    img: img25,
+    price: "₹475",
+    discount: "60% off",
+    label: "Trending",
+    category: ["All Deals","60%"]
+  },
+  {
+    title: "Digene Antacid Tablet",
+    img: img26,
+    price: "₹199",
+    discount: "50% off",
+    label: "Bestseller",
+    category: ["All Deals","50%"]
+  },
+  {
+    title: "MamyPoko Pants",
+    img: img27,
+    price: "₹105",
+    discount: "45% off",
+    label: "New Arrival",
+    category: ["All Deals","45%"]
+  },
+  {
+    title: "Pampers Baby Wipes",
+    img: img28,
+    price: "₹399",
+    discount: "45% off",
+    label: "New Arrival",
+    category: ["All Deals","45%"]
+  },
+  {
+    title: "Citrus Wet Wipes",
+    img: img29,
+    price: "₹495",
+    discount: "45% off",
+    label: "Top Rated",
+    category: ["All Deals","45%"]
+  },
+  {
+    title: "Glucon-D Energy Drink",
+    img: img30,
+    price: "₹99",
+    discount: "45% off",
+    label: "Limited Offer",
+    category: ["All Deals","45%"]
+  },
+  {
+    title: "Dr. Morepen Blood Glucose Test Strips",
+    img: img31,
+    price: "₹721",
+    discount: "45% off",
+    label: "Limited Offer",
+    category: ["All Deals","45%"]
+  }
+];
 
-    
-    // Add rest of products...
-  ];
+ 
 
-  const filteredProducts = products.filter(p => p.category === activeTab);
+  const filteredProducts = products.filter(p => p.category.includes(activeTab))
+
 
   return (
     <div className="deals-section">
@@ -240,6 +478,7 @@ const DealsSection = () => {
         ))}
       </div>
     </div>
+    
   );
 };
 
@@ -251,7 +490,9 @@ const BuyMedicinePage = () => (
     <CarouselComponent />
     <Specialties />
     <DealsSection />
+    <ContactOptions />
   </>
 );
+
 export default BuyMedicinePage;
-export { Main_logo, Nav, CarouselComponent, Specialties,DealsSection};
+export { Main_logo, Nav, Specialties, DealsSection, CarouselComponent };

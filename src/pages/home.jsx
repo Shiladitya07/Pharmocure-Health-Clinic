@@ -4,6 +4,9 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
+import { useLocation } from "react-router-dom";
+
+
 
 // Images
 import Book from "../assets/images/Book Appointment.jpg";
@@ -21,6 +24,7 @@ import ca from "../assets/images/ca.jpeg";
 import ph from "../assets/images/ph.png";
 import f from "../assets/images/f.png";
 import insta from "../assets/images/insta.png";
+import ContactOptions from './contact';
 
 function Main_logo() {
   return (
@@ -57,9 +61,10 @@ function Main_logo() {
 }
 
 function Nav() {
+  const location = useLocation();
   const navItems = [
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
-    { label: "Book Appointment", icon: "📅", link: "#" },
+    { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
     { label: "Consultation", icon: "🩺", link: "#" },
     { label: "Health Records", icon: "📁", link: "#" },
   ];
@@ -67,22 +72,22 @@ function Nav() {
   return (
     <>
       <nav className="nav-section">
-        {navItems.map((item, index) =>
-          item.link && item.link !== "#" ? (
+        {navItems.map((item, index) => {
+          const isActive = location.pathname === item.link;
+          return item.link && item.link !== "#" ? (
             <Link to={item.link} key={index} className="nav-card-link">
-
-  <div className="nav-card">
-    <div className="nav-icon">{item.icon}</div>
-    <div className="nav-label">{item.label}</div>
-  </div>
-</Link>
+              <div className={`nav-card ${isActive ? "active" : ""}`}>
+                <div className="nav-icon">{item.icon}</div>
+                <div className="nav-label">{item.label}</div>
+              </div>
+            </Link>
           ) : (
             <div className="nav-card" key={index}>
               <div className="nav-icon">{item.icon}</div>
               <div className="nav-label">{item.label}</div>
             </div>
-          )
-        )}
+          );
+        })}
       </nav>
       <hr />
     </>
@@ -237,21 +242,18 @@ function Services() {
 }
 
 function About() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  const toggleText = () => {
-    setIsOpen(!isOpen);
-  };
+   
+  
   return (
     <>
       <br></br>
-      <div className="about">
-        <div className="button-container">
-          <button className="button-73" onClick={toggleText}>
+      <div className="about-wrapper">
+        <div className="about-box">
+        
             ABOUT US
-          </button>
+          
         </div>
-        <div className={`about-content ${isOpen ? 'open' : ''}`}>
+        <div className="about-content">
           Welcome to Online Health Clinic – <br />
           your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br />
           At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br />
@@ -268,12 +270,7 @@ function About() {
             </div>
           </div>
           <hr />
-          <div className="team-box">Contact Us</div>
-          <div className="contact-icons">
-            <img src={ph} alt="contact" className="contact-image" />
-            <img src={f} alt="sad" className="contact-image" />
-            <img src={insta} alt="contact" className="contact-image" />
-          </div>
+          
         
       
       <hr />
