@@ -20,6 +20,11 @@ import Derma from "../assets/images/derma.png";
 import Gastro from "../assets/images/gastro.png";
 import Pidea from "../assets/images/pedia.png";
 import Genaral from "../assets/images/consult.png";
+import Cardio from "../assets/images/cardiology.png";
+import Ent from "../assets/images/head.png";
+import Phyca from "../assets/images/mood.png";
+import Uro from "../assets/images/urology.png";
+import Nephro from "../assets/images/kidney.png";
 
 function Main_logo() {
   return (
@@ -60,7 +65,7 @@ function Nav() {
   const navItems = [
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
     { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Contact us", icon: "🩺", link: "#" },
+    { label: "Contact Us", icon: "🩺", link: "#" },
     { label: "Health Records", icon: "📁", link: "#" },
   ];
 
@@ -126,6 +131,11 @@ const specialties = [
   { name: "Gastroenterology", icon: Gastro, link: "/specialists/gastro" },
   { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
   { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
+  { name: "ENT", icon: Ent, link: "/specialists/ent" },
+  { name: "Urologist", icon: Uro, link: "/Urologist" },
+  { name: "Cardiologist", icon: Cardio, link: "/specialists/Cardiologist" },
+  { name: "Psychiatrist", icon: Phyca, link: "/specialists/psychiatry" },
+  { name: "Nephrology", icon: Nephro, link: "/specialists/Nephrology" }
 ];
 
 const Specialties = () => {

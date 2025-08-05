@@ -9,6 +9,19 @@ import Banner2 from '../assets/images/banner5.jpg';
 import Banner3 from '../assets/images/banner6.jpg';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Gyno from "../assets/images/gyneaco.png";
+import Neu from "../assets/images/neurology.png";
+import Ortho from "../assets/images/orthopedic.png";
+import Dent from "../assets/images/dentist.png";
+import Derma from "../assets/images/derma.png";
+import Gastro from "../assets/images/gastro.png";
+import Pidea from "../assets/images/pedia.png";
+import Genaral from "../assets/images/consult.png";
+import Cardio from "../assets/images/cardiology.png";
+import Ent from "../assets/images/head.png";
+import Phyca from "../assets/images/mood.png";
+import Uro from "../assets/images/urology.png";
+import Nephro from "../assets/images/kidney.png";
 const doctorsData = [
   {
     id: 1,
@@ -206,6 +219,7 @@ export default function BookAppointment() {
         <Main_logo />
         <Nav />
          <CarouselComponent/>
+         <Specialties />
       <div className="filter-icon" onClick={() => setSidebarVisible(!sidebarVisible)}>
       
         <FaFilter />
@@ -339,6 +353,44 @@ const CarouselComponent = () => {
 
         </div>
       </Carousel>
+    </div>
+  );
+};
+
+const specialties = [
+  { name: "General Physician", icon: Genaral, link: "/specialists/general" },
+  { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
+  { name: "Obstetrics & Gynaecology", icon: Gyno, link: "/specialists/gynae" },
+  { name: "Orthopaedics", icon: Ortho, link: "/specialists/ortho" },
+  { name: "Neurology", icon: Neu, link: "/specialists/neurology" },
+  { name: "Gastroenterology", icon: Gastro, link: "/specialists/gastro" },
+  { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
+  { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
+  { name: "ENT", icon: Ent, link: "/specialists/ent" },
+  { name: "Urology", icon: Uro, link: "/specialists/urology" },
+  { name: "Cardiologist", icon: Cardio, link: "/specialists/Cardiologist" },
+  { name: "Psychiatrist", icon: Phyca, link: "/specialists/psychiatry" },
+  { name: "Nephrology", icon: Nephro, link: "/specialists/Nephrology" }
+];
+
+const Specialties = () => {
+  return (
+    <div className="specialties-section">
+      <h2>Browse by Specialties</h2>
+      <div className="specialties-grid">
+        {specialties.map((item, index) => (
+          <a
+            key={index}
+            href={item.link}
+            className="specialty-card animated-card"
+          >
+            <div className="icon-wrapper">
+              <img src={item.icon} alt={item.name} />
+            </div>
+            <p>{item.name}</p>
+          </a>
+        ))}
+      </div>
     </div>
   );
 };
