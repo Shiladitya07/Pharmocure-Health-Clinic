@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard";
 import { default as BuyMedicine } from "./pages/buymedicine";
 import BookAppointment from "./pages/bookappointment";
 import ContactOptions from "./pages/contact";
+import BackToTop from "./pages/backtotop";
 // Home page component (for "/")
 const Home = () => (
   <>
@@ -22,12 +23,14 @@ const Home = () => (
     <About />
     <Chatbot />
     <ContactOptions />
+    <BackToTop />
    
   </>
 );
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Home />} />          {/* Renders homepage components */}
       <Route path="/login" element={<Login />} />    {/* Renders login page only */}
@@ -36,6 +39,8 @@ function App() {
       <Route path="/buymedicine" element={<BuyMedicine />} />
       <Route path="/bookappointment" element={<BookAppointment />} />
     </Routes>
+    <BackToTop />
+    </>
   );
 }
 
