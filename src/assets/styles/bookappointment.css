@@ -308,3 +308,28 @@ body{
   margin: 0;
   padding: 0;
 }
+/* Carousel */
+.carouselll-wrapper {
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px lab(73.77% -12.08 14.15 / 0.544);
+}
+
+.carouselll-img {
+  width: 100%;
+  height: 400px;
+  object-fit: fill; ;
+}
+
+.carouselll .legend {
+  background: rgba(244, 243, 240, 0.4);
+  font-size: 20px;
+  padding: 10px 16px;
+  bottom: 20px;
+  border-radius: 6px;
+}
+.nav-card {
+  text-decoration: none;  
+}

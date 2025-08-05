@@ -4,6 +4,11 @@ import { FaFilter } from 'react-icons/fa';
 import '../assets/styles/bookAppointment.css'; // your CSS file
 import { Main_logo, Nav } from './home'; // Adjust the import path as necessary
 import ContactOptions from './contact';
+import Banner from '../assets/images/banner4.jpg';
+import Banner2 from '../assets/images/banner5.jpg';
+import Banner3 from '../assets/images/banner6.jpg';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 const doctorsData = [
   {
     id: 1,
@@ -200,7 +205,9 @@ export default function BookAppointment() {
     <div className="book-container">
         <Main_logo />
         <Nav />
+         <CarouselComponent/>
       <div className="filter-icon" onClick={() => setSidebarVisible(!sidebarVisible)}>
+      
         <FaFilter />
       </div>
 
@@ -308,4 +315,30 @@ export default function BookAppointment() {
   );
 }
 
+const CarouselComponent = () => {
+  return (
+    <div className="carouselll-wrapper">
+      <Carousel
+        autoPlay
+        infiniteLoop
+        showArrows
+        showThumbs={false}
+        showStatus={false}
+        dynamicHeight={false}
+      >
+        <div>
+          <img src={Banner} alt="Slide 1" className="carouselll-img" />
+         
+        </div>
+        <div>
+          <img src={Banner2} alt="Slide 2" className="carouselll-img" />
+       
+        </div>
+        <div>
+          <img src={Banner3} alt="Slide 3" className="carouselll-img" />
 
+        </div>
+      </Carousel>
+    </div>
+  );
+};
