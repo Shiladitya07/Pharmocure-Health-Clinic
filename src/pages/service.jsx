@@ -35,14 +35,7 @@ const Service = () => {
             <img src={Health} alt="Mental Health & Wellness" width='50px' />
             <h2>Mental Health & Wellness</h2>
             <p>Access confidential support for mental health and emotional well-being through our expert counselors and therapists—because your peace of mind matters.</p>
-            <button
-            onClick={() => {
-              if (window.botpressReady && window.botpressWebChat) {
-                  window.botpressWebChat.sendEvent({ type: 'show' });
-              } else {
-                alert("Chatbot is still loading. Please wait a few seconds.");
-              }
-              }}> Start Chat! </button>
+            <Link to ="/bookappointment"><button>Consult Now!</button></Link>
           
           </div>
           <div className='service-card'>

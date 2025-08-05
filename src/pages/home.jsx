@@ -25,40 +25,8 @@ import Ent from "../assets/images/head.png";
 import Phyca from "../assets/images/mood.png";
 import Uro from "../assets/images/urology.png";
 import Nephro from "../assets/images/kidney.png";
-
-function Main_logo() {
-  return (
-    <>
-      <header>
-        <div className="logo">
-          <h1>
-            <Link
-              to="/"
-              className="home-link"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              ONLINE HEALTH CLINIC
-            </Link>
-          </h1>
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search Doctors, Specialities, Conditions etc."
-            className="search-bar"
-          />
-        </div>
-        <div className="loginbutt">
-          <Link to="/login">
-            <button className='buttonn'>Login / Sign Up</button>
-          </Link>
-        </div>
-      </header>
-      <br />
-      <hr />
-    </>
-  );
-}
+import Logo from "../assets/images/logo.jpeg";
+c
 
 function Nav() {
   const location = useLocation();

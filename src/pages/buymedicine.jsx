@@ -7,6 +7,7 @@ import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
 
 // Images
+import Logo from "../assets/images/logo.jpeg";
 import Gyno from "../assets/images/gyneaco.png";
 import Neu from "../assets/images/neurology.png";
 import Ortho from "../assets/images/orthopedic.png";
@@ -54,23 +55,30 @@ import img29 from "../assets/images/img29.png";
 import img30 from "../assets/images/img30.png";
 import img31 from "../assets/images/img31.png"; // Dr. Morepen Gluco One BG-03 Blood Glucose Test Strips
 import ContactOptions from "./contact";
+
 function Main_logo() {
   return (
     <>
       <header>
         <div className="logo">
           <h1>
-            <Link to="/" className="home-link" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              ONLINE HEALTH CLINIC
-            </Link>
+           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
+  <span className="logo-text">PharmoCure Health Clinic</span>
+</Link>
+
           </h1>
         </div>
         <div className="search">
-          <input type="text" placeholder="Search Doctors, Specialities, Conditions etc." className="search-bar" />
+          <input
+            type="text"
+            placeholder="Search Doctors, Specialities, Conditions etc."
+            className="search-bar"
+          />
         </div>
-        <div className="loginbutt">
+        <div className="loginbutt"> 
           <Link to="/login">
-            <button className="buttonn">Login / Sign Up</button>
+            <button className='buttonn'>Login / Sign Up</button>
           </Link>
         </div>
       </header>
