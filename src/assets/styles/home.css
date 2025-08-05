@@ -240,7 +240,7 @@ header {
 
 .column {
   flex: 1 1 300px;
-  max-width: 400px;
+  max-width: 340px;
   min-width: 250px;
   display: flex;
   flex-direction: column;
@@ -280,7 +280,7 @@ li:hover {
 }
 
 li:hover .hover-panel,
-.whychoose-button:focus + .hover-panel {
+.whychoose-button:active + .hover-panel {
   display: block;
 }
 
@@ -301,11 +301,26 @@ li:hover .hover-panel,
   width: 300px;
 }
 .whychoose-button:hover {
-  background-color: #4650e7;
+  background-image: linear-gradient(to right, rgb(5, 188, 255), rgb(74, 21, 234), rgb(245, 28, 28));
+  color: transparent;
+  background-clip: text;
+  background-size: 200%;
+  animation: gradientanimation 5s linear infinite;
 }
 .whychoose-h1{
-    background-image: linear-gradient(rgb(5, 188, 255), rgb(88, 205, 154));
+    background-image: linear-gradient(to right, rgb(5, 188, 255), rgb(74, 21, 234), rgb(24, 247, 150), rgb(5, 188, 255));
     color: transparent;
     background-clip: text;
+    animation: gradientanimation 5s linear infinite;
+    font-size: 125%;
+    background-size: 200%;
+}
+@keyframes gradientanimation {
+  0% {
+    background-position: 200% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /* button-73 */

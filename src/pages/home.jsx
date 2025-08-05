@@ -20,11 +20,6 @@ import Derma from "../assets/images/derma.png";
 import Gastro from "../assets/images/gastro.png";
 import Pidea from "../assets/images/pedia.png";
 import Genaral from "../assets/images/consult.png";
-import ca from "../assets/images/ca.jpeg";
-import ph from "../assets/images/ph.png";
-import f from "../assets/images/f.png";
-import insta from "../assets/images/insta.png";
-import ContactOptions from './contact';
 
 function Main_logo() {
   return (
@@ -65,7 +60,7 @@ function Nav() {
   const navItems = [
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
     { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Consultation", icon: "🩺", link: "#" },
+    { label: "Contact us", icon: "🩺", link: "#" },
     { label: "Health Records", icon: "📁", link: "#" },
   ];
 
