@@ -70,7 +70,7 @@ function Nav() {
 }
 const CarouselComponent = () => {
   return (
-    <div className="carousell-wrapper">
+    <div className="carousellll-wrapper">
       <Carousel
         autoPlay
         infiniteLoop

@@ -14,9 +14,11 @@ import text from "../assets/images/text.png";    // Add this line
 import send from "../assets/images/send.png";    // Add this line
 import phone from "../assets/images/phone.png";  // Add this line
 import email from "../assets/images/email.png";
+
+
 const CarouselComponent = () => {
   return (
-    <div className="carousell-wrapper">
+    <div className="carousellll-wrapper">
       <Carousel
         autoPlay
         infiniteLoop
@@ -25,9 +27,9 @@ const CarouselComponent = () => {
         showStatus={false}
         dynamicHeight={false}
       >
-        <div><img src={Banner} alt="Slide 1" className="carousell-img" /></div>
-        <div><img src={Banner2} alt="Slide 2" className="carousell-img" /></div>
-        <div><img src={Banner3} alt="Slide 3" className="carousell-img" /></div>
+        <div><img src={Banner} alt="Slide 1" className="carousellll-img" /></div>
+        <div><img src={Banner2} alt="Slide 2" className="carousellll-img" /></div>
+        <div><img src={Banner3} alt="Slide 3" className="carousellll-img" /></div>
       </Carousel>
     </div>
   );
@@ -51,7 +53,7 @@ const HealthRecordsPage = () => {
         <div className="health-info-text">
           <h3>Receive & Organize Your Health Information</h3>
           <p>
-            Apollo 24|7 Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
+           PharmoCure Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
             You can use it to view and share your records anytime.
           </p>
         </div>
@@ -62,7 +64,7 @@ const HealthRecordsPage = () => {
         <div className="health-info-text">
           <h3>Receive & Organize Your Health Information</h3>
           <p>
-            Apollo 24|7 Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
+            PharmoCure Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
             You can use it to view and share your records anytime.
           </p>
         </div>
@@ -73,7 +75,7 @@ const HealthRecordsPage = () => {
         <div className="health-info-text">
           <h3>Receive & Organize Your Health Information</h3>
           <p>
-            Apollo 24|7 Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
+            PharmoCure Personal Health Records will sync all your Health Records in real time from the entire Apollo ecosystem i.e. Apollo Hospitals, Apollo Diagnostics, Apollo 24|7, Apollo Clinics etc.
             You can use it to view and share your records anytime.
           </p>
         </div>
