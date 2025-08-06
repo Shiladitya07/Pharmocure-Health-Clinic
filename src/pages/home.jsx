@@ -26,7 +26,7 @@ import Phyca from "../assets/images/mood.png";
 import Uro from "../assets/images/urology.png";
 import Nephro from "../assets/images/kidney.png";
 import Logo from "../assets/images/logo.jpeg";
-import 
+
 function Main_logo() {
   return (
     <>

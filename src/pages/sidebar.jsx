@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../assets/styles/sidebar.css"; 
-import logo from "../assets/images/logo.png";
+import Logo from "../assets/images/logo.jpeg";
 import profile from "../assets/images/profile.jpg";
 
 const Sidebar = () => {
@@ -64,9 +64,9 @@ const Sidebar = () => {
     <nav className="sidebar locked">
       <div className="logo_items flex">
         <span className="nav_image">
-          <img src={logo} alt="logo_img" />
+          <img src={Logo} alt="logo_img" />
         </span>
-        <span className="logo_name">CodingNepal</span>
+        <span className="logo_name">PharmoCure Admin</span>
         <i className="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
         <i className="bx bx-x" id="sidebar-close"></i>
       </div>
@@ -84,60 +84,37 @@ const Sidebar = () => {
                 <span>Overview</span>
               </a>
             </li>
-            <li className="item">
-              <a href="#" className="link flex">
-                <i className="bx bx-grid-alt"></i>
-                <span>All Projects</span>
-              </a>
-            </li>
+            
           </ul>
 
           <ul className="menu_item">
             <div className="menu_title flex">
-              <span className="title">Editor</span>
+              <span className="title">Doctors</span>
               <span className="line"></span>
             </div>
             <li className="item">
               <a href="#" className="link flex">
                 <i className="bx bxs-magic-wand"></i>
-                <span>Magic Build</span>
+                <span>Overview</span>
               </a>
             </li>
             <li className="item">
               <a href="#" className="link flex">
                 <i className="bx bx-folder"></i>
-                <span>New Projects</span>
-              </a>
-            </li>
-            <li className="item">
-              <a href="#" className="link flex">
-                <i className="bx bx-cloud-upload"></i>
-                <span>Upload New</span>
+                <span>Recruit</span>
               </a>
             </li>
           </ul>
 
           <ul className="menu_item">
             <div className="menu_title flex">
-              <span className="title">Setting</span>
+              <span className="title">Patients</span>
               <span className="line"></span>
             </div>
             <li className="item">
               <a href="#" className="link flex">
                 <i className="bx bx-flag"></i>
-                <span>Notice Board</span>
-              </a>
-            </li>
-            <li className="item">
-              <a href="#" className="link flex">
-                <i className="bx bx-award"></i>
-                <span>Award</span>
-              </a>
-            </li>
-            <li className="item">
-              <a href="#" className="link flex">
-                <i className="bx bx-cog"></i>
-                <span>Setting</span>
+                <span>Appointment</span>
               </a>
             </li>
           </ul>
@@ -145,11 +122,12 @@ const Sidebar = () => {
 
         <div className="sidebar_profile flex">
           <span className="nav_image">
-            <img src={profile} alt="profile_img" />
+            <img src={Logo} alt="profile_img" />
           </span>
           <div className="data_text">
-            <span className="name">David Oliva</span>
-            <span className="email">david@gmail.com</span>
+            <span className="name">Join</span>
+            <br></br>
+            <span className="email">pharmocurehealthclinic@gmail.com</span>
           </div>
         </div>
       </div>

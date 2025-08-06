@@ -6,9 +6,6 @@ const Navbar = () => (
   <nav className="navbar flex">
     <i className="bx bx-menu" id="sidebar-open"></i>
     <input type="text" placeholder="Search..." className="search_box" />
-    <span className="nav_image">
-      <img src={profile} alt="profile_img" />
-    </span>
   </nav>
 );
 

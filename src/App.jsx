@@ -25,6 +25,7 @@ const Home = () => (
     <Chatbot />
     <ContactOptions />
     <BackToTop />
+    
    
   </>
 );
@@ -41,7 +42,8 @@ function App() {
       <Route path="/bookappointment" element={<BookAppointment />} />
       <Route path="/contactus" element={<ContactUs />} />
     </Routes>
-    <BackToTop />
+      
+      
     </>
   );
 }
