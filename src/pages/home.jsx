@@ -26,7 +26,37 @@ import Phyca from "../assets/images/mood.png";
 import Uro from "../assets/images/urology.png";
 import Nephro from "../assets/images/kidney.png";
 import Logo from "../assets/images/logo.jpeg";
-c
+function Main_logo() {
+  return (
+    <>
+      <header>
+        <div className="logo">
+          <h1>
+           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
+  <span className="logo-text">PharmoCure Health Clinic</span>
+</Link>
+
+          </h1>
+        </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search Doctors, Specialities, Conditions etc."
+            className="search-bar"
+          />
+        </div>
+        <div className="loginbutt"> 
+          <Link to="/login">
+            <button className='buttonn'>Login / Sign Up</button>
+          </Link>
+        </div>
+      </header>
+      <br />
+      <hr />
+    </>
+  );
+}
 
 function Nav() {
   const location = useLocation();

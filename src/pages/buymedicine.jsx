@@ -6,6 +6,9 @@ import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
 
+
+ // ✅ Now safe to export
+
 // Images
 import Logo from "../assets/images/logo.jpeg";
 import Gyno from "../assets/images/gyneaco.png";
