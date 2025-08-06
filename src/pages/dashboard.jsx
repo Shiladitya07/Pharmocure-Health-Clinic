@@ -42,7 +42,8 @@ const Dashboard = () => (
       <h3>Monthly Patient Registrations</h3>
       <br></br>
       <br></br>
-    
+      <Sidebar />
+      <Navbar />
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={patientData}>
             <CartesianGrid strokeDasharray="3 3" />

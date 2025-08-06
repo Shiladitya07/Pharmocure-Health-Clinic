@@ -1,0 +1,106 @@
+carouselcontact-wrapper {
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px lab(73.77% -12.08 14.15 / 0.544);
+}
+
+.carouselcontact-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.carouselcontact .legend {
+  background: rgba(244, 243, 240, 0.4);
+  font-size: 20px;
+  padding: 10px 16px;
+  bottom: 20px;
+  border-radius: 6px;
+}
+.nav-card {
+  text-decoration: none;  
+}
+.contactus-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.contactus-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.contactus-info {
+  flex: 1 1 250px;
+  min-width: 220px;
+  padding: 16px;
+  background: #f7f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.contactus-info h3 {
+  margin-top: 0;
+  color: #1e88e5;
+}
+
+.contactus-form {
+  flex: 1 1 320px;
+  min-width: 260px;
+  padding: 16px;
+  background: #f7f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.contactus-form h3 {
+  margin-top: 0;
+  color: #43a047;
+}
+
+.contactus-input,
+.contactus-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #fff;
+  transition: border 0.2s;
+}
+
+.contactus-input:focus,
+.contactus-textarea:focus {
+  border: 1.5px solid #1e88e5;
+  outline: none;
+}
+
+.contactus-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.contactus-submit {
+  background: #1e88e5;
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contactus-submit:hover {
+  background: #1565c0;
+}

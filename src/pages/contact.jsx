@@ -4,11 +4,14 @@ import phone from "../assets/images/phone.png"
 import text from "../assets/images/text.png"
 import email from "../assets/images/email.png"
 import tell from "../assets/images/tell.png"
+import { Link } from "react-router-dom";
 
 function ContactOptions() {
   return (
     <>
-      <div className="team-box">Contact Us</div>
+    <Link to="/contactus">
+        <div className="team-box" style={{ cursor: "pointer" }}>Contact Us</div>
+      </Link>
       <div className="contact-icons">
         {/* You can add icons here later */}
       </div>

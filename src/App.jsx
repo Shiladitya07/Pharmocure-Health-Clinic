@@ -11,6 +11,7 @@ import { default as BuyMedicine } from "./pages/buymedicine";
 import BookAppointment from "./pages/bookappointment";
 import ContactOptions from "./pages/contact";
 import BackToTop from "./pages/backtotop";
+import ContactUs from "./pages/contactus";
 // Home page component (for "/")
 const Home = () => (
   <>
@@ -38,6 +39,7 @@ function App() {
       <Route path="/admin" element={<Dashboard />} />
       <Route path="/buymedicine" element={<BuyMedicine />} />
       <Route path="/bookappointment" element={<BookAppointment />} />
+      <Route path="/contactus" element={<ContactUs />} />
     </Routes>
     <BackToTop />
     </>
