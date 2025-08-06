@@ -1,0 +1,68 @@
+
+/* ---------------- CAROUSEL ---------------- */
+.carousell-wrapper {
+  width: 90%;
+  margin: 30px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px lab(73.77% -12.08 14.15 / 0.544);
+}
+
+.carousell-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover ;
+}
+
+.carousell .legend {
+  background: rgba(244, 243, 240, 0.4);
+  font-size: 20px;
+  padding: 10px 16px;
+  bottom: 20px;
+  border-radius: 6px;
+}
+/* Main heading */
+.health-record-content {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+/* Wrapper around all info sections */
+.health-info-wrapper {
+  background-color: #f1f7ff;
+  padding: 40px 20px;
+}
+
+/* Each info section: icon + text */
+.health-info-section {
+  display: flex;
+  align-items: center;  /* ✅ Changed from 'flex-start' to 'center' */
+  gap: 20px;
+  margin-bottom: 30px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The icon */
+.health-info-icon {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+}
+
+/* Text container */
+.health-info-text h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.health-info-text p {
+  font-size: 16px;
+  margin-top: 8px;
+  line-height: 1.5;
+  color: #333;
+}

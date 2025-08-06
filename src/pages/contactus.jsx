@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 
 // Images
+import Logo from "../assets/images/logo.jpeg";
 import phone from "../assets/images/phone.png";
 import text from "../assets/images/text.png";
 import email from "../assets/images/email.png";
@@ -92,13 +93,11 @@ function Main_logo() {
       <header>
         <div className="logo">
           <h1>
-            <Link
-              to="/"
-              className="home-link"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              ONLINE HEALTH CLINIC
-            </Link>
+           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
+  <span className="logo-text">PharmoCure Health Clinic</span>
+</Link>
+
           </h1>
         </div>
         <div className="search">
@@ -108,7 +107,7 @@ function Main_logo() {
             className="search-bar"
           />
         </div>
-        <div className="loginbutt">
+        <div className="loginbutt"> 
           <Link to="/login">
             <button className='buttonn'>Login / Sign Up</button>
           </Link>
@@ -125,8 +124,8 @@ function Nav() {
   const navItems = [
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
     { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Contact us", icon: "🩺", link: "/contactus" }, // <-- updated
-    { label: "Health Records", icon: "📁", link: "#" },
+    { label: "Contact Us", icon: "🩺", link: "/contactus" }, // <-- updated
+    { label: "Health Records", icon: "📁", link: "/healthrecords" },
   ];
 
   return (

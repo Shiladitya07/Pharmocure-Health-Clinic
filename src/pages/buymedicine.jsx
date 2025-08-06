@@ -97,7 +97,7 @@ function Nav() {
   const navItems = [
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
     { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Consultation", icon: "🩺", link: "/consultation" },
+    { label: "Contact Us", icon: "🩺", link: "/contactus" },
     { label: "Health Records", icon: "📁", link: "/healthrecords" },
   ];
 

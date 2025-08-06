@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { FaFilter } from 'react-icons/fa';
-import '../assets/styles/bookAppointment.css'; // your CSS file
-import { Main_logo, Nav } from './home'; // Adjust the import path as necessary
+import { Main_logo, Nav } from './home';
 import ContactOptions from './contact';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Banner from '../assets/images/banner4.jpg';
 import Banner2 from '../assets/images/banner5.jpg';
 import Banner3 from '../assets/images/banner6.jpg';
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Gyno from "../assets/images/gyneaco.png";
-import Neu from "../assets/images/neurology.png";
-import Ortho from "../assets/images/orthopedic.png";
-import Dent from "../assets/images/dentist.png";
-import Derma from "../assets/images/derma.png";
-import Gastro from "../assets/images/gastro.png";
-import Pidea from "../assets/images/pedia.png";
-import Genaral from "../assets/images/consult.png";
-import Cardio from "../assets/images/cardiology.png";
-import Ent from "../assets/images/head.png";
-import Phyca from "../assets/images/mood.png";
-import Uro from "../assets/images/urology.png";
-import Nephro from "../assets/images/kidney.png";
+import { Specialties } from './home';
+import '../assets/styles/bookAppointment.css';
+import Gyno from '../assets/images/gyneaco.png';
+import Neu from '../assets/images/neurology.png';
+import Ortho from '../assets/images/orthopedic.png';
+import Dent from '../assets/images/dentist.png';
+import Derma from '../assets/images/derma.png';
+import Gastro from '../assets/images/gastro.png';
+import Pidea from '../assets/images/pedia.png';
+import Genaral from '../assets/images/consult.png';
+import Cardio from '../assets/images/cardiology.png';
+import Ent from '../assets/images/head.png';
+import Phyca from '../assets/images/mood.png';
+import Uro from '../assets/images/urology.png';
+import Nephro from '../assets/images/kidney.png';
+
+Modal.setAppElement('#root');
+
+const specialties = [
+  "General Physician", "Dermatology", "Obstetrics & Gynaecology", "Orthopaedics",
+  "Neurology", "Gastroenterology", "Paediatrics", "Dentist", "ENT",
+  "Urology", "Cardiologist", "Psychiatrist", "Nephrology"
+];
+
 const doctorsData = [
   {
     id: 1,
@@ -31,66 +41,73 @@ const doctorsData = [
     experience: 12,
     gender: "Female",
     available: "Morning",
+    rating: 4.9,
     image: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     id: 2,
     name: "Dr. Anil Sharma",
-    specialization: "Dermatologist",
+    specialization: "Dermatology",
     location: "Delhi",
     experience: 5,
     gender: "Male",
     available: "Evening",
+    rating: 4.6,
     image: "https://randomuser.me/api/portraits/men/34.jpg"
   },
   {
     id: 3,
     name: "Dr. Priya Desai",
-    specialization: "Gynecologist",
+    specialization: "Obstetrics & Gynaecology",
     location: "Mumbai",
     experience: 15,
     gender: "Female",
     available: "Afternoon",
+    rating: 4.8,
     image: "https://randomuser.me/api/portraits/women/68.jpg"
   },
   {
     id: 4,
     name: "Dr. Raj Malhotra",
-    specialization: "Orthopedic",
+    specialization: "Orthopaedics",
     location: "Chennai",
     experience: 18,
     gender: "Male",
     available: "Morning",
+    rating: 4.7,
     image: "https://randomuser.me/api/portraits/men/48.jpg"
   },
   {
     id: 5,
     name: "Dr. Sneha Verma",
-    specialization: "Pediatrician",
+    specialization: "Paediatrics",
     location: "Kolkata",
     experience: 8,
     gender: "Female",
     available: "Evening",
+    rating: 4.4,
     image: "https://randomuser.me/api/portraits/women/25.jpg"
   },
   {
     id: 6,
     name: "Dr. Abhishek Banerjee",
-    specialization: "Neurologist",
+    specialization: "Neurology",
     location: "Hyderabad",
     experience: 20,
     gender: "Male",
     available: "Morning",
+    rating: 5.0,
     image: "https://randomuser.me/api/portraits/men/77.jpg"
   },
   {
     id: 7,
     name: "Dr. Kavita Mehta",
-    specialization: "ENT Specialist",
+    specialization: "ENT",
     location: "Bangalore",
     experience: 6,
     gender: "Female",
     available: "Afternoon",
+    rating: 4.3,
     image: "https://randomuser.me/api/portraits/women/10.jpg"
   },
   {
@@ -101,6 +118,7 @@ const doctorsData = [
     experience: 11,
     gender: "Male",
     available: "Evening",
+    rating: 4.2,
     image: "https://randomuser.me/api/portraits/men/53.jpg"
   },
   {
@@ -111,52 +129,23 @@ const doctorsData = [
     experience: 14,
     gender: "Female",
     available: "Morning",
+    rating: 4.9,
     image: "https://randomuser.me/api/portraits/women/36.jpg"
   },
   {
     id: 10,
     name: "Dr. Manish Thakur",
-    specialization: "Urologist",
+    specialization: "Urology",
     location: "Chennai",
     experience: 9,
     gender: "Male",
     available: "Afternoon",
+    rating: 4.5,
     image: "https://randomuser.me/api/portraits/men/84.jpg"
-  },
-  {
-    id: 11,
-    name: "Dr. Sushmita Roy",
-    specialization: "Oncologist",
-    location: "Hyderabad",
-    experience: 13,
-    gender: "Female",
-    available: "Evening",
-    image: "https://randomuser.me/api/portraits/women/83.jpg"
-  },
-  {
-    id: 12,
-    name: "Dr. Sameer Jain",
-    specialization: "Nephrologist",
-    location: "Bangalore",
-    experience: 10,
-    gender: "Male",
-    available: "Morning",
-    image: "https://randomuser.me/api/portraits/men/26.jpg"
-  },
-  {
-    id: 13,
-    name: "Dr. Meenakshi Joshi",
-    specialization: "Dentist",
-    location: "Mumbai",
-    experience: 16,
-    gender: "Female",
-    available: "Morning",
-    image: "https://randomuser.me/api/portraits/women/65.jpg"
   }
 ];
 
 const itemsPerPage = 4;
-Modal.setAppElement('#root');
 
 export default function BookAppointment() {
   const [filter, setFilter] = useState({ specialization: "", gender: "", location: "", exp10: false });
@@ -166,6 +155,8 @@ export default function BookAppointment() {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: "", date: "", time: "", reason: "" });
+
+  const maxRating = Math.max(...doctorsData.map(doc => doc.rating || 0));
 
   useEffect(() => {
     if (window.innerWidth < 768) setSidebarVisible(false);
@@ -187,23 +178,25 @@ export default function BookAppointment() {
     (filter.gender === "" || doc.gender === filter.gender) &&
     (filter.location === "" || doc.location === filter.location) &&
     (!filter.exp10 || doc.experience >= 10) &&
-    (searchTerm === "" || doc.name.toLowerCase().includes(searchTerm.toLowerCase()) || doc.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
+    (searchTerm === "" ||
+      doc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      doc.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  const totalPages = Math.ceil(filteredDoctors.length / itemsPerPage);
   const paginatedDoctors = filteredDoctors.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalPages = Math.ceil(filteredDoctors.length / itemsPerPage);
 
-  const getPageList = () => {
-    const pages = [];
-    if (totalPages <= 7) return [...Array(totalPages)].map((_, i) => i + 1);
-    if (currentPage <= 4) return [1, 2, 3, 4, 5, "...", totalPages];
-    if (currentPage >= totalPages - 3) return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-    return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
-  };
-
-  const handleBook = (doctor) => {
-    setSelectedDoctor(doctor);
-    setModalOpen(true);
+  const renderStars = (rating) => {
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
+    const empty = 5 - full - (half ? 1 : 0);
+    return (
+      <>
+        {[...Array(full)].map((_, i) => <span key={"f"+i}>★</span>)}
+        {half && <span>☆</span>}
+        {[...Array(empty)].map((_, i) => <span key={"e"+i}>☆</span>)}
+      </>
+    );
   };
 
   const handleSubmit = (e) => {
@@ -213,15 +206,22 @@ export default function BookAppointment() {
     setFormData({ name: "", date: "", time: "", reason: "" });
   };
 
-  return (
+  const getPageList = () => {
+    const pages = [];
+    if (totalPages <= 7) return [...Array(totalPages)].map((_, i) => i + 1);
+    if (currentPage <= 4) return [1, 2, 3, 4, 5, "...", totalPages];
+    if (currentPage >= totalPages - 3) return [1, "...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
+  };
 
+  return (
     <div className="book-container">
-        <Main_logo />
-        <Nav />
-         <CarouselComponent/>
-         <Specialties />
+      <Main_logo />
+      <Nav />
+      <CarouselComponent />
+      <Specialties />
+
       <div className="filter-icon" onClick={() => setSidebarVisible(!sidebarVisible)}>
-      
         <FaFilter />
       </div>
 
@@ -232,9 +232,7 @@ export default function BookAppointment() {
           <label>Department:</label>
           <select name="specialization" value={filter.specialization} onChange={handleFilterChange}>
             <option value="">All</option>
-            {[...new Set(doctorsData.map(doc => doc.specialization))].map(dep => (
-              <option key={dep} value={dep}>{dep}</option>
-            ))}
+            {specialties.map(dep => <option key={dep} value={dep}>{dep}</option>)}
           </select>
 
           <label>Gender:</label>
@@ -252,19 +250,12 @@ export default function BookAppointment() {
             ))}
           </select>
 
-            <div className="checkbox-row">
-            <input
-                type="checkbox"
-                name="exp10"
-                id="exp10"
-                checked={filter.exp10}
-                onChange={handleFilterChange}
-            />
+          <div className="checkbox-row">
+            <input type="checkbox" name="exp10" id="exp10" checked={filter.exp10} onChange={handleFilterChange} />
             <label htmlFor="exp10">Experience ≥ 10 yrs</label>
-            </div>
-
+          </div>
         </div>
-        
+
         <div className="doctor-list">
           <input
             type="text"
@@ -274,40 +265,37 @@ export default function BookAppointment() {
             onChange={handleSearchChange}
           />
 
-          {paginatedDoctors.length ? (
-            paginatedDoctors.map(doc => (
-                <div key={doc.id} className="doctor-card">
-                <img src={doc.image} alt={doc.name} className="doctor-img" />
-                <h3>{doc.name}</h3>
+          {paginatedDoctors.length ? paginatedDoctors.map(doc => (
+            <div key={doc.id} className="doctor-card">
+              <div className="doctor-info">
+                <h3>
+                  {doc.name}
+                  {doc.rating >=4.8 && <span className="popular-tag">Most Popular</span>}
+                </h3>
                 <p>Specialization: {doc.specialization}</p>
                 <p>Location: {doc.location}</p>
                 <p>Experience: {doc.experience} years</p>
                 <p>Gender: {doc.gender}</p>
                 <p>Available: {doc.available}</p>
-                <button onClick={() => handleBook(doc)}>Book Appointment</button>
-                </div>
-            ))
-
-          ) : (
-            <p>No doctors found.</p>
-          )}
+                <p>Rating: <span className="stars">{renderStars(doc.rating)}</span></p>
+                <button onClick={() => { setSelectedDoctor(doc); setModalOpen(true); }}>Book Appointment</button>
+              </div>
+              <img src={doc.image} alt={doc.name} className="doctor-img" />
+            </div>
+          )) : <p>No doctors found.</p>}
 
           <div className="pagination">
             <button disabled={currentPage === 1} onClick={() => setCurrentPage(prev => prev - 1)}>&#x2039;</button>
             {getPageList().map((page, i) =>
               page === "..." ? <span key={i} className="dots">...</span> : (
-                <button
-                  key={i}
-                  className={page === currentPage ? "active" : ""}
-                  onClick={() => setCurrentPage(page)}
-                >{page}</button>
+                <button key={i} className={page === currentPage ? "active" : ""} onClick={() => setCurrentPage(page)}>{page}</button>
               )
             )}
             <button disabled={currentPage === totalPages} onClick={() => setCurrentPage(prev => prev + 1)}>&#x203A;</button>
           </div>
         </div>
       </div>
-    <ContactOptions />
+
       <Modal
         isOpen={modalOpen}
         onRequestClose={() => setModalOpen(false)}
@@ -324,73 +312,21 @@ export default function BookAppointment() {
           <button type="submit">Confirm Booking</button>
         </form>
       </Modal>
+
+      <ContactOptions />
     </div>
-    
   );
 }
 
-const CarouselComponent = () => {
-  return (
-    <div className="carouselll-wrapper">
-      <Carousel
-        autoPlay
-        infiniteLoop
-        showArrows
-        showThumbs={false}
-        showStatus={false}
-        dynamicHeight={false}
-      >
-        <div>
-          <img src={Banner} alt="Slide 1" className="carouselll-img" />
-         
-        </div>
-        <div>
-          <img src={Banner2} alt="Slide 2" className="carouselll-img" />
-       
-        </div>
-        <div>
-          <img src={Banner3} alt="Slide 3" className="carouselll-img" />
+const CarouselComponent = () => (
+  <div className="carouselll-wrapper">
+    <Carousel autoPlay infiniteLoop showArrows showThumbs={false} showStatus={false}>
+      <div><img src={Banner} alt="Slide 1" className="carouselll-img" /></div>
+      <div><img src={Banner2} alt="Slide 2" className="carouselll-img" /></div>
+      <div><img src={Banner3} alt="Slide 3" className="carouselll-img" /></div>
+    </Carousel>
+  </div>
+);
 
-        </div>
-      </Carousel>
-    </div>
-  );
-};
 
-const specialties = [
-  { name: "General Physician", icon: Genaral, link: "/specialists/general" },
-  { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
-  { name: "Obstetrics & Gynaecology", icon: Gyno, link: "/specialists/gynae" },
-  { name: "Orthopaedics", icon: Ortho, link: "/specialists/ortho" },
-  { name: "Neurology", icon: Neu, link: "/specialists/neurology" },
-  { name: "Gastroenterology", icon: Gastro, link: "/specialists/gastro" },
-  { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
-  { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
-  { name: "ENT", icon: Ent, link: "/specialists/ent" },
-  { name: "Urology", icon: Uro, link: "/specialists/urology" },
-  { name: "Cardiologist", icon: Cardio, link: "/specialists/Cardiologist" },
-  { name: "Psychiatrist", icon: Phyca, link: "/specialists/psychiatry" },
-  { name: "Nephrology", icon: Nephro, link: "/specialists/Nephrology" }
-];
 
-const Specialties = () => {
-  return (
-    <div className="specialties-section">
-      <h2>Browse by Specialties</h2>
-      <div className="specialties-grid">
-        {specialties.map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            className="specialty-card animated-card"
-          >
-            <div className="icon-wrapper">
-              <img src={item.icon} alt={item.name} />
-            </div>
-            <p>{item.name}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-};

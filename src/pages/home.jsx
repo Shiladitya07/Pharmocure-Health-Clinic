@@ -65,7 +65,7 @@ function Nav() {
     { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
     { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
     { label: "Contact Us", icon: "🩺", link: "/contactus" },
-    { label: "Health Records", icon: "📁", link: "#" },
+    { label: "Health Records", icon: "📁", link: "/healthrecords" },
   ];
 
   return (

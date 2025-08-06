@@ -42,7 +42,7 @@ const Service = () => {
             <img src={Test} alt="Lab Test" width='50px' />
             <h2>Book Lab Tests</h2>
             <p>Book lab tests online with home sample collection and timely digital reports—accurate, convenient, and trusted diagnostics at your doorstep.</p>
-            <a><button>Book Test!</button></a>
+            <Link to="/labtest"><button>Book Test!</button></Link>
           </div>
         </div>
       </div>

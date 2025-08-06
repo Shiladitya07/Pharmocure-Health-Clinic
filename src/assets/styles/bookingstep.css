@@ -1,0 +1,67 @@
+.booking-container {
+  border: 1px solid #f2c94c;
+  border-radius: 12px;
+  padding: 45px 20px;
+  margin: 40px auto;
+  max-width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffefc;
+}
+
+.booking-title {
+  flex: 0 0 220px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #111;
+  line-height: 1.4;
+}
+
+.booking-steps {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.step-box {
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.step-label {
+  background-color: #f2c94c;
+  color: #000;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  position: absolute;
+  top: -24px;
+}
+
+.step-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.step-content strong {
+  display: block;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.step-content p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}

@@ -12,6 +12,8 @@ import BookAppointment from "./pages/bookappointment";
 import ContactOptions from "./pages/contact";
 import BackToTop from "./pages/backtotop";
 import ContactUs from "./pages/contactus";
+import HealthRecordsPage from "./pages/healthrecords";
+import LabTest from "./pages/labtest";
 // Home page component (for "/")
 const Home = () => (
   <>
@@ -41,8 +43,10 @@ function App() {
       <Route path="/buymedicine" element={<BuyMedicine />} />
       <Route path="/bookappointment" element={<BookAppointment />} />
       <Route path="/contactus" element={<ContactUs />} />
+      <Route path="/healthrecords" element={<HealthRecordsPage />} />
+      <Route path="/labtest" element={<LabTest />} />
     </Routes>
-      
+      <BackToTop />
       
     </>
   );
