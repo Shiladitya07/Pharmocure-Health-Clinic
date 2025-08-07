@@ -44,9 +44,9 @@ function ContactUsInfo() {
 
     emailjs.sendForm(
       'PharmoCure Health Clinic',      // Replace with your EmailJS service ID
-      'template_owxqaen',     // Replace with your EmailJS template ID
+      'template_s5ei0bi',     // Replace with your EmailJS template ID
       e.target,
-      'pAimpR4LUP5er5Hq3'          // Replace with your EmailJS public key
+      'ul0WSLIJB7bDHVbkp'          // Replace with your EmailJS public key
     )
     .then(
       (result) => {
