@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell
+  PieChart, Pie, Cell, BarChart, Bar
 } from 'recharts'
 import Sidebar from './sidebar'
 import Navbar from './navbar'
@@ -39,6 +39,17 @@ const doctorDemandData = [
   { department: 'Nephrology', demand: 43 },
 ]
 
+// Sample data for weekly patient visits
+const weeklyVisitsData = [
+  { day: "Mon", visits: 25 },
+  { day: "Tue", visits: 38 },
+  { day: "Wed", visits: 32 },
+  { day: "Thu", visits: 45 },
+  { day: "Fri", visits: 40 },
+  { day: "Sat", visits: 28 },
+  { day: "Sun", visits: 20 }
+]
+
 // Colors for pie chart
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A28BFE', '#FF6699', '#BBEF7E', '#FFB6C1', '#D4A5A5', '#FFE156', '#6A0572', '#F7B7A3', '#B9FBC0'];
 
@@ -53,9 +64,9 @@ const titleStyle = {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   textShadow: '0 2px 8px rgba(78,84,200,0.15)',
-  pointerEvents: 'none', // Prevent hover effects
-  userSelect: 'none',    // Prevent text selection
-  transition: 'none'     // Prevent bouncing or animation
+  pointerEvents: 'none',
+  userSelect: 'none',
+  transition: 'none'
 }
 
 const subtitleStyle = {
@@ -63,7 +74,7 @@ const subtitleStyle = {
   fontWeight: 500,
   fontSize: '1.1rem',
   color: '#4e54c8',
-  marginBottom: '3.5rem', // Increased from '2rem' to '3.5rem'
+  marginBottom: '3.5rem',
   letterSpacing: '0.5px',
   pointerEvents: 'none',
   userSelect: 'none',
@@ -91,16 +102,8 @@ const Dashboard = () => (
         alignItems: 'center'
       }}>
         <Navbar />
-        <h2 style={{
-          fontFamily: 'Segoe UI, Arial, sans-serif',
-          fontWeight: 800,
-          fontSize: '2.3rem',
-          color: '#22223b',
-          letterSpacing: '2px',
-          marginBottom: '2.5rem',
-          textShadow: '0 2px 12px rgba(78,84,200,0.10)'
-        }}>
-        </h2>
+
+        {/* Monthly Patient Registrations */}
         <div style={{ marginBottom: '6rem', width: '100%' }}>
           <h3 align='center' style={titleStyle}>Monthly Patient Registrations</h3>
           <div align='center' style={subtitleStyle}>Overview of patient registration trends throughout the year</div>
@@ -115,6 +118,28 @@ const Dashboard = () => (
             </LineChart>
           </ResponsiveContainer>
         </div>
+
+        {/* Weekly Patient Visits - BAR CHART */}
+        <div style={{ marginBottom: '6rem', width: '100%' }}>
+          <h3 align='center' style={titleStyle}>Patient Visits This Week</h3>
+          <div align='center' style={subtitleStyle}>Daily visit trends for the current week</div>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={weeklyVisitsData}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Bar
+                dataKey="visits"
+                fill="#4070f4"
+                radius={[10, 10, 0, 0]} // Rounded top corners
+                barSize={40} // Thickness of bars
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Doctor Demand Chart */}
         <div style={{ width: '100%' }}>
           <h3 align='center' style={titleStyle}>Monthly Doctor Demand by Department</h3>
           <div align='center' style={subtitleStyle}>Department-wise doctor demand for the current year</div>
@@ -128,7 +153,6 @@ const Dashboard = () => (
                 cy="50%"
                 outerRadius={200}
                 label
-                
               >
                 {doctorDemandData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -139,6 +163,7 @@ const Dashboard = () => (
             </PieChart>
           </ResponsiveContainer>
         </div>
+
       </div>
     </div>
   </>

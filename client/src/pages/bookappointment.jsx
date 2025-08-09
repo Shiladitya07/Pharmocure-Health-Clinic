@@ -305,6 +305,7 @@ export default function BookAppointment() {
       >
         <h2>Book with {selectedDoctor?.name}</h2>
         <form onSubmit={handleSubmit}>
+          <input type='hidden' name='drid' value={`${selectedDoctor?.id}`}></input>
           <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
           <input required type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
           <input required type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />

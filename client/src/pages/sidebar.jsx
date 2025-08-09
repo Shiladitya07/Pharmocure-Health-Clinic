@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import "../assets/styles/sidebar.css"; 
 import Logo from "../assets/images/logo.jpeg";
-import profile from "../assets/images/profile.jpg";
 
 const Sidebar = () => {
   useEffect(() => {
-    // Sidebar logic from script.js
     const sidebar = document.querySelector(".sidebar");
     const sidebarOpenBtn = document.querySelector("#sidebar-open");
     const sidebarCloseBtn = document.querySelector("#sidebar-close");
@@ -47,16 +46,15 @@ const Sidebar = () => {
     sidebarLockBtn.addEventListener("click", toggleLock);
     sidebar.addEventListener("mouseleave", hideSidebar);
     sidebar.addEventListener("mouseenter", showSidebar);
-    sidebarOpenBtn.addEventListener("click", toggleSidebar);
-    sidebarCloseBtn.addEventListener("click", toggleSidebar);
+    sidebarOpenBtn?.addEventListener("click", toggleSidebar);
+    sidebarCloseBtn?.addEventListener("click", toggleSidebar);
 
-    // Cleanup
     return () => {
       sidebarLockBtn.removeEventListener("click", toggleLock);
       sidebar.removeEventListener("mouseleave", hideSidebar);
       sidebar.removeEventListener("mouseenter", showSidebar);
-      sidebarOpenBtn.removeEventListener("click", toggleSidebar);
-      sidebarCloseBtn.removeEventListener("click", toggleSidebar);
+      sidebarOpenBtn?.removeEventListener("click", toggleSidebar);
+      sidebarCloseBtn?.removeEventListener("click", toggleSidebar);
     };
   }, []);
 
@@ -73,49 +71,54 @@ const Sidebar = () => {
 
       <div className="menu_container">
         <div className="menu_items">
+          {/* Dashboard Section */}
           <ul className="menu_item">
             <div className="menu_title flex">
               <span className="title">Dashboard</span>
               <span className="line"></span>
             </div>
             <li className="item">
-              <a href="#" className="link flex">
+              <NavLink 
+                to="/admin/dashboard" 
+                className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
+              >
                 <i className="bx bx-home-alt"></i>
                 <span>Overview</span>
-              </a>
+              </NavLink>
             </li>
-            
           </ul>
 
+          {/* Doctors Section */}
           <ul className="menu_item">
             <div className="menu_title flex">
               <span className="title">Doctors</span>
               <span className="line"></span>
             </div>
             <li className="item">
-              <a href="#" className="link flex">
+              <NavLink 
+                to="/admin/doctors" 
+                className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
+              >
                 <i className="bx bxs-magic-wand"></i>
                 <span>Overview</span>
-              </a>
-            </li>
-            <li className="item">
-              <a href="#" className="link flex">
-                <i className="bx bx-folder"></i>
-                <span>Recruit</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
 
+          {/* Patients Section */}
           <ul className="menu_item">
             <div className="menu_title flex">
               <span className="title">Patients</span>
               <span className="line"></span>
             </div>
             <li className="item">
-              <a href="#" className="link flex">
+              <NavLink 
+                to="/admin/patients" 
+                className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
+              >
                 <i className="bx bx-flag"></i>
                 <span>Appointment</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -126,7 +129,7 @@ const Sidebar = () => {
           </span>
           <div className="data_text">
             <span className="name">Join</span>
-            <br></br>
+            <br />
             <span className="email">pharmocurehealthclinic@gmail.com</span>
           </div>
         </div>
