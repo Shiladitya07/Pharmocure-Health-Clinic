@@ -23,6 +23,7 @@ import Ent from '../assets/images/head.png';
 import Phyca from '../assets/images/mood.png';
 import Uro from '../assets/images/urology.png';
 import Nephro from '../assets/images/kidney.png';
+import { AppointmentBook } from '../service/api.js';
 
 Modal.setAppElement('#root');
 
@@ -214,6 +215,45 @@ export default function BookAppointment() {
     return [1, "...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages];
   };
 
+  const [appoinment, setAppointment] = useState({
+    drid: selectedDoctor?.id || "",
+    drname: selectedDoctor?.name || "",
+    drspecialization: selectedDoctor?.specialization || "",
+    drlocation: selectedDoctor?.location || "",
+    drgender: selectedDoctor?.gender || "",
+    dravailable: selectedDoctor?.available || "",
+    pname: "",
+    adate: "",
+    atime: "",
+    reason: ""
+  });
+
+  useEffect(() =>{
+    if (selectedDoctor?.id && selectedDoctor?.name && selectedDoctor?.specialization  && selectedDoctor?.location && selectedDoctor?.gender && selectedDoctor?.available) {
+      setAppointment(prev => ({ ...prev, drid: selectedDoctor.id, drname: selectedDoctor.name, drspecialization: selectedDoctor.specialization, drlocation: selectedDoctor.location, drgender: selectedDoctor.gender, dravailable: selectedDoctor.available }));
+    }
+  }, [selectedDoctor]);
+
+  const onValuechage = (e) =>{
+    setAppointment({...appoinment, [e.target.name]: e.target.value });
+    console.log(appoinment);
+  }
+
+  const submitData = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await AppointmentBook(appoinment);
+      if (response.status === 201) {
+        alert(response.data);
+      }else{
+        alert("Something went wrong, please try again later.");
+      }
+    }catch(error){
+      console.error("Error submitting appointment data:", error);
+    }
+  }
+
+
   return (
     <div className="book-container">
       <Main_logo />
@@ -306,11 +346,20 @@ export default function BookAppointment() {
         <h2>Book with {selectedDoctor?.name}</h2>
         <form onSubmit={handleSubmit}>
           <input type='hidden' name='drid' value={`${selectedDoctor?.id}`}></input>
-          <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
+          {/* <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
           <input required type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
           <input required type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
-          <textarea required placeholder="Reason for visit" value={formData.reason} onChange={e => setFormData({ ...formData, reason: e.target.value })}></textarea>
-          <button type="submit">Confirm Booking</button>
+          <textarea required placeholder="Reason for visit" value={formData.reason} onChange={e => setFormData({ ...formData, reason: e.target.value })}></textarea> */}
+          <input type='hidden' name='drname' value={`${selectedDoctor?.name}`}></input>
+          <input type='hidden' name='drspecialization' value={`${selectedDoctor?.specialization}`}></input>
+          <input type='hidden' name='drlocation' value={`${selectedDoctor?.location}`}></input>
+          <input type='hidden' name='gender' value={`${selectedDoctor?.gender}`}></input>
+          <input type='hidden' name='available' value={`${selectedDoctor?.available}`}></input>
+          <input type="text" name='pname' onChange={onValuechage} placeholder="Your Name" />
+          <input type="date" name='adate' onChange={onValuechage} />
+          <input type="time" name='atime' onChange={onValuechage} />
+          <textarea placeholder="Reason for visit" name='reason' onChange={onValuechage}></textarea>
+          <button type="submit" onClick={submitData}>Confirm Booking</button>
         </form>
       </Modal>
 
