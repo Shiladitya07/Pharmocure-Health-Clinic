@@ -79,7 +79,7 @@ const Sidebar = () => {
             </div>
             <li className="item">
               <NavLink 
-                to="/admin/dashboard" 
+                to="/admin" 
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bx-home-alt"></i>
@@ -91,12 +91,12 @@ const Sidebar = () => {
           {/* Doctors Section */}
           <ul className="menu_item">
             <div className="menu_title flex">
-              <span className="title">Doctors</span>
+              <span className="title">Medicines</span>
               <span className="line"></span>
             </div>
             <li className="item">
               <NavLink 
-                to="/admin/doctors" 
+                to="/admin/docover" 
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bxs-magic-wand"></i>
@@ -113,7 +113,7 @@ const Sidebar = () => {
             </div>
             <li className="item">
               <NavLink 
-                to="/admin/patients" 
+                to="/admin/appgraph" 
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bx-flag"></i>
