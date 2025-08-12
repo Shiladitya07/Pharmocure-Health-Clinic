@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
-
+import Modal from "react-modal";
 
  // ✅ Now safe to export
 
@@ -119,7 +119,6 @@ function Nav() {
   );
 }
 
-
 const specialties = [
   { name: "General Physician", icon: Genaral, link: "/specialists/general" },
   { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
@@ -174,89 +173,111 @@ const CarouselComponent = () => {
 const DealsSection = () => {
   const [activeTab, setActiveTab] = useState("All Deals");
   const tabs = ["All Deals","45%", "50%", "60%"];
-
+  // MODAL STATE
+  const [buyModalOpen, setBuyModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [formData, setFormData] = useState({
+    recipientName: "",
+    address: "",
+    phone: "",
+    email: "",
+  });
+  // Success message state
+  const [orderSuccess, setOrderSuccess] = useState(false);
+  // Product data
   const products = [
-    {
-      title: "Essentials Aqua Blue Hand Wash",
-      img: Aqua,
-      price: "₹105",
-      discount: "45% off",
-      label: "Bestseller",
-      category: ["All Deals","45%"]
-    },
-    {
-      title: "OneTouch Select Plus Glucometer",
-      img: Coal,
-      price: "₹495",
-      discount: "50% off",
-      label: "Limited Time Offer",
-      category: ["All Deals", "50%"]
-    },
-    {
-      title: "Lacto Calamine SPF 50 Lotion",
-      img: Lacto,
-      price: "₹102",
-      discount: "60% off",
-      label: "Buy 2, +2% OFF",
-      category: ["All Deals", "50%", "60%"]
-    },
-    {
-      title: "Dr. Ortho Oil",
-      img: ca,
-      price: "₹295",
-      discount: "60% off",
-      label: "Buy 1 Get 1",
-      category: ["All Deals","60%"]
-    },
-    {
-      title: "Dolo 650 Tablet",
-      img: img1,
-      price: "₹225",
-      discount: "45% off",
-      label: "Bestseller#2",
-      category: ["All Deals", "45%"]
-    },
-    {
-      title: "Calpol 500 Tablet",
-      img: img2,
-      price: "₹375",
-      discount: "45% off",
-      label: "Limited Offer",
-      category: ["All Deals","45%"]
-    },
-    {
-      title: "Combiflam Tablet",
-      img: img3,
-      price: "₹150",
-      discount: "60% off",
-      label: "Trending",
-      category: ["All Deals","60%"]
-    },
-    {
-      title: "Crocin Advance",
-      img: img4,
-      price: "₹325",
-      discount: "25% off",
-      label: "Limited Offer",
-      category: ["All Deals"]
-    },
-    {
-      title: "Himalaya Liv.52 DS Syrup",
-      img: img5,
-      price: "₹349",
-      discount: "60% off",
-      label: "Limited Offer",
-      category: ["All Deals","50%"]
-    },
-    {
-      title: "Sofy Anti Bacteria XL",
-      img: img6,
-      price: "₹450",
-      discount: "25% off",
-      label: "Top Rated",
-      category: ["All Deals","60%"]
-    },
-    {
+  {
+    id: 1,
+    title: "Essentials Aqua Blue Hand Wash",
+    img: Aqua,
+    price: "₹105",
+    discount: "45% off",
+    label: "Bestseller",
+    category: ["All Deals","45%"]
+  },
+  {
+    id: 2,
+    title: "OneTouch Select Plus Glucometer",
+    img: Coal,
+    price: "₹495",
+    discount: "50% off",
+    label: "Limited Time Offer",
+    category: ["All Deals", "50%"]
+  },
+  {
+    id: 3,
+    title: "Lacto Calamine SPF 50 Lotion",
+    img: Lacto,
+    price: "₹102",
+    discount: "60% off",
+    label: "Buy 2, +2% OFF",
+    category: ["All Deals", "50%", "60%"]
+  },
+  {
+    id: 4,
+    title: "Dr. Ortho Oil",
+    img: ca,
+    price: "₹295",
+    discount: "60% off",
+    label: "Buy 1 Get 1",
+    category: ["All Deals","60%"]
+  },
+  {
+    id: 5,
+    title: "Dolo 650 Tablet",
+    img: img1,
+    price: "₹225",
+    discount: "45% off",
+    label: "Bestseller#2",
+    category: ["All Deals", "45%"]
+  },
+  {
+    id: 6,
+    title: "Calpol 500 Tablet",
+    img: img2,
+    price: "₹375",
+    discount: "45% off",
+    label: "Limited Offer",
+    category: ["All Deals","45%"]
+  },
+  {
+    id: 7,
+    title: "Combiflam Tablet",
+    img: img3,
+    price: "₹150",
+    discount: "60% off",
+    label: "Trending",
+    category: ["All Deals","60%"]
+  },
+  {
+    id: 8,
+    title: "Crocin Advance",
+    img: img4,
+    price: "₹325",
+    discount: "25% off",
+    label: "Limited Offer",
+    category: ["All Deals"]
+  },
+  {
+    id: 9,
+    title: "Himalaya Liv.52 DS Syrup",
+    img: img5,
+    price: "₹349",
+    discount: "60% off",
+    label: "Limited Offer",
+    category: ["All Deals","50%"]
+  },
+  {
+    id: 10,
+    title: "Sofy Anti Bacteria XL",
+    img: img6,
+    price: "₹450",
+    discount: "25% off",
+    label: "Top Rated",
+    category: ["All Deals","60%"]
+  },
+  {
+    id: 11,
     title: "Accu-Chek Active Glucometer",
     img: img7,
     price: "₹455",
@@ -265,6 +286,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 12,
     title: "Revital H Capsules",
     img: img8,
     price: "₹349",
@@ -273,6 +295,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 13,
     title: "Dettol Antiseptic Liquid",
     img: img9,
     price: "₹105",
@@ -281,6 +304,7 @@ const DealsSection = () => {
     category: "All Deals"
   },
   {
+    id: 14,
     title: "Savlon Handwash",
     img: img10,
     price: "₹105",
@@ -289,6 +313,7 @@ const DealsSection = () => {
     category: ["All Deals","60%"]
   },
   {
+    id: 15,
     title: "Sugar Free Gold",
     img: img11,
     price: "₹450",
@@ -297,6 +322,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 16,
     title: "Volini Spray",
     img: img12,
     price: "₹225",
@@ -305,6 +331,7 @@ const DealsSection = () => {
     category: "All Deals"
   },
   {
+    id: 17,
     title: "Moov Pain Relief Cream",
     img: img13,
     price: "₹275",
@@ -313,6 +340,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 18,
     title: "Boroline Antiseptic",
     img: img14,
     price: "₹250",
@@ -321,6 +349,7 @@ const DealsSection = () => {
     category: ["All Deals","60%"]
   },
   {
+    id: 19,
     title: "Zandu Balm",
     img: img15,
     price: "₹475",
@@ -329,6 +358,7 @@ const DealsSection = () => {
     category: ["60%","All Deals"]
   },
   {
+    id: 20,
     title: "OneTouch Select Glucometer",
     img: img16,
     price: "₹325",
@@ -337,6 +367,7 @@ const DealsSection = () => {
     category: "All Deals"
   },
   {
+    id: 21,
     title: "Lacto Calamine Lotion",
     img: img17,
     price: "₹295",
@@ -345,6 +376,7 @@ const DealsSection = () => {
     category: ["All Deals"]
   },
   {
+    id: 22,
     title: "Vicks Vaporub",
     img: img18,
     price: "₹199",
@@ -353,6 +385,7 @@ const DealsSection = () => {
     category: [ "All Deals"]
   },
   {
+    id: 23,
     title: "Eno Sachet",
     img: img19,
     price: "₹349",
@@ -361,6 +394,7 @@ const DealsSection = () => {
     category: ["All Deals","60%"]
   },
   {
+    id: 24,
     title: "ORS-Electral Powder",
     img: img20,
     price: "₹349",
@@ -369,6 +403,7 @@ const DealsSection = () => {
     category: ["50%","All Deals"]
   },
   {
+    id: 25,
     title: "Horlicks Health Drink",
     img: img21,
     price: "₹225",
@@ -377,6 +412,7 @@ const DealsSection = () => {
     category: [ "All Deals"]
   },
   {
+    id: 26,
     title: "Ensure Diabetes Care",
     img: img22,
     price: "₹199",
@@ -385,6 +421,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 27,
     title: "Pediasure Premium Chocolate",
     img: img23,
     price: "₹250",
@@ -393,6 +430,7 @@ const DealsSection = () => {
     category: "All Deals"
   },
   {
+    id: 28,
     title: "Bournvita",
     img: img24,
     price: "₹200",
@@ -401,6 +439,7 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   },
   {
+    id: 29,
     title: "Dabur Chyawanprash",
     img: img25,
     price: "₹475",
@@ -409,6 +448,7 @@ const DealsSection = () => {
     category: ["All Deals","60%"]
   },
   {
+    id: 30,
     title: "Digene Antacid Tablet",
     img: img26,
     price: "₹199",
@@ -417,6 +457,7 @@ const DealsSection = () => {
     category: ["All Deals","50%"]
   },
   {
+    id: 31,
     title: "MamyPoko Pants",
     img: img27,
     price: "₹105",
@@ -425,6 +466,7 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   },
   {
+    id: 32,
     title: "Pampers Baby Wipes",
     img: img28,
     price: "₹399",
@@ -433,6 +475,7 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   },
   {
+    id: 33,
     title: "Citrus Wet Wipes",
     img: img29,
     price: "₹495",
@@ -441,6 +484,7 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   },
   {
+    id: 34,
     title: "Glucon-D Energy Drink",
     img: img30,
     price: "₹99",
@@ -449,6 +493,7 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   },
   {
+    id: 35,
     title: "Dr. Morepen Blood Glucose Test Strips",
     img: img31,
     price: "₹721",
@@ -462,34 +507,164 @@ const DealsSection = () => {
 
   const filteredProducts = products.filter(p => p.category.includes(activeTab))
 
+  // Handle input changes in modal form
+  const onBuyValueChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleBuySubmit = (e) => {
+    e.preventDefault();
+    // You can add logic here, e.g. API call to purchase medicine
+    console.log("Purchase Details:", {
+      product: selectedProduct,
+      buyer: formData,
+    });
+
+    // Close modal and reset form
+    setBuyModalOpen(false);
+    setFormData({
+      recipientName: "",
+      address: "",
+      phone: "",
+      email: "",
+    });
+    setOrderSuccess(true);
+    setTimeout(() => setOrderSuccess(false), 2500);
+  };
+
+  // Calculate discounted price
+  const calculateAmountToPay = () => {
+    if (!selectedProduct) return "";
+    const priceNum = Number(selectedProduct.price.replace(/[^\d]/g, "")) || 0;
+    const discountPercent =
+      Number(selectedProduct.discount.replace(/[^\d]/g, "")) || 0;
+    const discountedPrice = priceNum - (priceNum * discountPercent) / 100;
+    return `₹${discountedPrice.toFixed(2)}`;
+  }; 
 
   return (
-    <div className="deals-section">
-      <h2>💊 Value Deals at Best Price</h2>
-      <div className="tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab}
-            className={activeTab === tab ? "tab active" : "tab"}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
+    <>
+      {orderSuccess && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: '#4BB543',
+          color: 'white',
+          padding: '16px 32px',
+          borderRadius: '8px',
+          zIndex: 2000,
+          fontWeight: 'bold',
+          fontSize: '1.2rem',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+        }}>
+          Order successful!
+        </div>
+      )}
+      <div className="deals-section">
+        <h2>💊 Value Deals at Best Price</h2>
+        <div className="tabs">
+          {tabs.map(tab => (
+            <button
+              key={tab}
+              className={activeTab === tab ? "tab active" : "tab"}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+        <div className="deals-grid">
+          {filteredProducts.map((item, index) => (
+            <div key={index} className="deal-card">
+              <div className="tag">{item.label}</div>
+              <img src={item.img} alt={item.title} />
+              <p className="deal-title">{item.title}</p>
+              <p className="price">{item.price} <span>{item.discount}</span></p>
+              <button
+                className="add-button"
+                onClick={() => {
+                  setSelectedProduct(item);
+                  setBuyModalOpen(true);
+                }}>
+                BUY
+              </button>          
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="deals-grid">
-        {filteredProducts.map((item, index) => (
-          <div key={index} className="deal-card">
-            <div className="tag">{item.label}</div>
-            <img src={item.img} alt={item.title} />
-            <p className="deal-title">{item.title}</p>
-            <p className="price">{item.price} <span>{item.discount}</span></p>
-            <button className="add-button">ADD</button>
-          </div>
-        ))}
-      </div>
-    </div>
-    
+      <Modal
+          isOpen={buyModalOpen}
+          onRequestClose={() => setBuyModalOpen(false)}
+          contentLabel="Buy Medicine"
+          className="modal"
+          overlayClassName="modal-overlay"
+        >
+          <h2>Buy Medicine: {selectedProduct?.title}</h2>
+
+          {/* Hidden product details */}
+          <input type="hidden" name="prodid" value={selectedProduct?.id || ""} />
+          <input
+            type="hidden"
+            name="prodtitle"
+            value={selectedProduct?.title || ""}
+          />
+          <input
+            type="hidden"
+            name="proddiscount"
+            value={selectedProduct?.discount || ""}
+          />
+
+          {/* Visible price, discount, amount */}
+          <p>
+            Price: <strong>{selectedProduct?.price || "-"}</strong>
+          </p>
+          <p>
+            Discount: <strong>{selectedProduct?.discount || "-"}</strong>
+          </p>
+          <p>
+            Amount to Pay: <strong>{calculateAmountToPay()}</strong>
+          </p>
+
+          <form onSubmit={handleBuySubmit}>
+            <input
+              required
+              type="text"
+              name="recipientName"
+              placeholder="Recipient Name"
+              value={formData.recipientName}
+              onChange={onBuyValueChange}
+            />
+            <textarea
+              required
+              name="address"
+              placeholder="Address"
+              value={formData.address}
+              onChange={onBuyValueChange}
+            />
+            <input
+              required
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              pattern="[0-9]{10}"
+              value={formData.phone}
+              onChange={onBuyValueChange}
+            />
+            <input
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={onBuyValueChange}
+            />
+            <button type="submit">Confirm Purchase</button>
+          </form>
+        </Modal>
+    </>
   );
 };
 
@@ -507,3 +682,5 @@ const BuyMedicinePage = () => (
 
 export default BuyMedicinePage;
 export { Main_logo, Nav, Specialties, DealsSection, CarouselComponent };
+
+//
