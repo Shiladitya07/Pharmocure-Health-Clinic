@@ -6,6 +6,7 @@ import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
 import Modal from "react-modal";
+import { Main_logo,Nav,Specialties } from "./home";
 
  // ✅ Now safe to export
 
@@ -59,90 +60,7 @@ import img30 from "../assets/images/img30.png";
 import img31 from "../assets/images/img31.png"; // Dr. Morepen Gluco One BG-03 Blood Glucose Test Strips
 import ContactOptions from "./contact";
 
-function Main_logo() {
-  return (
-    <>
-      <header>
-        <div className="logo">
-          <h1>
-           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
-  <span className="logo-text">PharmoCure Health Clinic</span>
-</Link>
 
-          </h1>
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search Doctors, Specialities, Conditions etc."
-            className="search-bar"
-          />
-        </div>
-        <div className="loginbutt"> 
-          <Link to="/login">
-            <button className='buttonn'>Login / Sign Up</button>
-          </Link>
-        </div>
-      </header>
-      <br />
-      <hr />
-    </>
-  );
-}
-
-function Nav() {
-  const location = useLocation();
-
-  const navItems = [
-    { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
-    { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Contact Us", icon: "🩺", link: "/contactus" },
-    { label: "Health Records", icon: "📁", link: "/healthrecords" },
-  ];
-
-  return (
-    <>
-      <nav className="nav-section">
-        {navItems.map((item, index) => {
-          const isActive = location.pathname === item.link;
-          return (
-            <Link to={item.link} key={index} className={`nav-card ${isActive ? "active" : ""}`}>
-              <div className="nav-icon">{item.icon}</div>
-              <div className="nav-label">{item.label}</div>
-            </Link>
-          );
-        })}
-      </nav>
-      <hr />
-    </>
-  );
-}
-
-const specialties = [
-  { name: "General Physician", icon: Genaral, link: "/specialists/general" },
-  { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
-  { name: "Obstetrics & Gynaecology", icon: Gyno, link: "/specialists/gynae" },
-  { name: "Orthopaedics", icon: Ortho, link: "/specialists/ortho" },
-  { name: "Neurology", icon: Neu, link: "/specialists/neurology" },
-  { name: "Gastroenterology", icon: Gastro, link: "/specialists/gastro" },
-  { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
-  { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
-];
-
-const Specialties = () => (
-  <div className="specialties-section">
-    <h2>Browse by Specialties</h2>
-    <div className="specialties-grid">
-      {specialties.map((item, index) => (
-        <a key={index} href={item.link} className="specialty-card animated-card">
-          <div className="icon-wrapper"><img src={item.icon} alt={item.name} /></div>
-          <p>{item.name}</p>
-        </a>
-      ))}
-    </div>
-  </div>
-);
 const CarouselComponent = () => {
   return (
     <div className="carousell-wrapper">

@@ -9,7 +9,7 @@ import "../assets/styles/contactus.css";
 import "../assets/styles/contact.css"; // Import the CSS
 import { useEffect } from "react";
 import ContactOptions from './contact';
-
+import { Main_logo,Nav } from './home';
 // Images
 import Logo from "../assets/images/logo.jpeg";
 import phone from "../assets/images/phone.png";
@@ -87,71 +87,6 @@ function ContactUsInfo() {
   );
 }
 
-function Main_logo() {
-  return (
-    <>
-      <header>
-        <div className="logo">
-          <h1>
-           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
-  <span className="logo-text">PharmoCure Health Clinic</span>
-</Link>
-
-          </h1>
-        </div>
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search Doctors, Specialities, Conditions etc."
-            className="search-bar"
-          />
-        </div>
-        <div className="loginbutt"> 
-          <Link to="/login">
-            <button className='buttonn'>Login / Sign Up</button>
-          </Link>
-        </div>
-      </header>
-      <br />
-      <hr />
-    </>
-  );
-}
-
-function Nav() {
-  const location = useLocation();
-  const navItems = [
-    { label: "Buy Medicine", icon: "💊", link: "/buymedicine" },
-    { label: "Book Appointment", icon: "📅", link: "/bookappointment" },
-    { label: "Contact Us", icon: "🩺", link: "/contactus" }, // <-- updated
-    { label: "Health Records", icon: "📁", link: "/healthrecords" },
-  ];
-
-  return (
-    <>
-      <nav className="nav-section">
-        {navItems.map((item, index) => {
-          const isActive = location.pathname === item.link;
-          return item.link && item.link !== "#" ? (
-            <Link to={item.link} key={index} className="nav-card-link">
-              <div className={`nav-card ${isActive ? "active" : ""}`}>
-                <div className="nav-icon">{item.icon}</div>
-                <div className="nav-label">{item.label}</div>
-              </div>
-            </Link>
-          ) : (
-            <div className="nav-card" key={index}>
-              <div className="nav-icon">{item.icon}</div>
-              <div className="nav-label">{item.label}</div>
-            </div>
-          );
-        })}
-      </nav>
-      <hr />
-    </>
-  );
-}
 
 const CarouselComponent = () => {
   return (

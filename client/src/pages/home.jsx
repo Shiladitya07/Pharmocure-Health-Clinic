@@ -1,12 +1,9 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"; 
+import { Link, useLocation, useNavigate } from "react-router-dom"; 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
-import { useLocation } from "react-router-dom";
-
-
 
 // Images
 import Book from "../assets/images/Book Appointment.jpg";
@@ -27,19 +24,42 @@ import Uro from "../assets/images/urology.png";
 import Nephro from "../assets/images/kidney.png";
 import Logo from "../assets/images/logo.jpeg";
 
-function Main_logo() {
+/* ------------------ HEADER / MAIN LOGO ------------------ */
+const Main_logo = () => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // ✅ check if user is logged in (from localStorage)
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (savedUser) setUser(savedUser);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // ✅ clear user
+    setUser(null);
+    navigate("/"); // back to home
+  };
+
   return (
     <>
       <header>
         <div className="logo">
           <h1>
-           <Link to="/" className="home-link logo-flex" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-  <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
-  <span className="logo-text">PharmoCure Health Clinic</span>
-</Link>
-
+            <Link
+              to="/"
+              className="home-link logo-flex"
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            >
+              <img src={Logo} alt="PharmoCure Logo" className="logo-img" />
+              <span className="logo-text">PharmoCure Health Clinic</span>
+            </Link>
           </h1>
         </div>
+
+        {/*  Search Bar */}
         <div className="search">
           <input
             type="text"
@@ -47,18 +67,36 @@ function Main_logo() {
             className="search-bar"
           />
         </div>
-        <div className="loginbutt"> 
-          <Link to="/login">
-            <button className='buttonn'>Login / Sign Up</button>
-          </Link>
+
+        {/*  Navbar Right Side */}
+        <div className="nav-links">
+          {!user ? (
+            // if NOT logged in → show login & register
+            <>
+              <Link to="/login" className="buttonn">
+                Login/Signup
+              </Link>
+            </>
+          ) : (
+            // if logged in → show account + logout
+            <>
+              <Link to="/account" className="greetinglogin">
+                Hi, {user.name} !
+              </Link>
+              <button onClick={handleLogout} className="buttonn">
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </header>
       <br />
       <hr />
     </>
   );
-}
+};
 
+/* ------------------ NAVIGATION SECTION ------------------ */
 function Nav() {
   const location = useLocation();
   const navItems = [
@@ -73,18 +111,13 @@ function Nav() {
       <nav className="nav-section">
         {navItems.map((item, index) => {
           const isActive = location.pathname === item.link;
-          return item.link && item.link !== "#" ? (
+          return (
             <Link to={item.link} key={index} className="nav-card-link">
               <div className={`nav-card ${isActive ? "active" : ""}`}>
                 <div className="nav-icon">{item.icon}</div>
                 <div className="nav-label">{item.label}</div>
               </div>
             </Link>
-          ) : (
-            <div className="nav-card" key={index}>
-              <div className="nav-icon">{item.icon}</div>
-              <div className="nav-label">{item.label}</div>
-            </div>
           );
         })}
       </nav>
@@ -93,6 +126,7 @@ function Nav() {
   );
 }
 
+/* ------------------ CAROUSEL ------------------ */
 const CarouselComponent = () => {
   return (
     <div className="carousel-wrapper">
@@ -121,6 +155,7 @@ const CarouselComponent = () => {
   );
 };
 
+/* ------------------ SPECIALTIES ------------------ */
 const specialties = [
   { name: "General Physician", icon: Genaral, link: "/specialists/general" },
   { name: "Dermatology", icon: Derma, link: "/specialists/dermatology" },
@@ -131,10 +166,10 @@ const specialties = [
   { name: "Paediatrics", icon: Pidea, link: "/specialists/paediatrics" },
   { name: "Dentist", icon: Dent, link: "/specialists/dentist" },
   { name: "ENT", icon: Ent, link: "/specialists/ent" },
-  { name: "Urologist", icon: Uro, link: "/Urologist" },
-  { name: "Cardiologist", icon: Cardio, link: "/specialists/Cardiologist" },
+  { name: "Urologist", icon: Uro, link: "/specialists/urologist" },
+  { name: "Cardiologist", icon: Cardio, link: "/specialists/cardiologist" },
   { name: "Psychiatrist", icon: Phyca, link: "/specialists/psychiatry" },
-  { name: "Nephrology", icon: Nephro, link: "/specialists/Nephrology" }
+  { name: "Nephrology", icon: Nephro, link: "/specialists/nephrology" },
 ];
 
 const Specialties = () => {
@@ -143,22 +178,23 @@ const Specialties = () => {
       <h2>Browse by Specialties</h2>
       <div className="specialties-grid">
         {specialties.map((item, index) => (
-          <a
+          <Link
             key={index}
-            href={item.link}
+            to={item.link}
             className="specialty-card animated-card"
           >
             <div className="icon-wrapper">
               <img src={item.icon} alt={item.name} />
             </div>
             <p>{item.name}</p>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
   );
 };
 
+/* ------------------ WHY CHOOSE US ------------------ */
 function Why() {
   return (
     <>
@@ -170,22 +206,19 @@ function Why() {
         <div className="row">
           <div className="column">
             <ul>
-              <li style={{ listStyle: "disc" }}>
-                <button className="whychoose-button">
-                  24x7 Availability
-                </button>
+              <li>
+                <button className="whychoose-button">24x7 Availability</button>
                 <div className="hover-panel">
-                  We provide top-notch services with expert staff and great support!
+                  We provide top-notch services with expert staff and great
+                  support!
                 </div>
               </li>
             </ul>
           </div>
           <div className="column">
             <ul>
-              <li style={{ listStyle: "disc" }}>
-                <button className="whychoose-button">
-                  Verified Doctors
-                </button>
+              <li>
+                <button className="whychoose-button">Verified Doctors</button>
                 <div className="hover-panel">
                   Get in contact with doctors from our verified sources!
                 </div>
@@ -196,7 +229,7 @@ function Why() {
         <div className="row">
           <div className="column">
             <ul>
-              <li style={{ listStyle: "disc" }}>
+              <li>
                 <button className="whychoose-button">
                   Instant Prescription
                 </button>
@@ -208,12 +241,12 @@ function Why() {
           </div>
           <div className="column">
             <ul>
-              <li style={{ listStyle: "disc" }}>
-                <button className="whychoose-button">
-                  Secure Consultation
-                </button>
+              <li>
+                <button className="whychoose-button">Secure Consultation</button>
                 <div className="hover-panel">
-                  Your health information deserves the highest level of privacy. Speak with trusted professionals, knowing your details remain confidential and safe!
+                  Your health information deserves the highest level of privacy.
+                  Speak with trusted professionals, knowing your details remain
+                  confidential and safe!
                 </div>
               </li>
             </ul>
@@ -225,6 +258,7 @@ function Why() {
   );
 }
 
+/* ------------------ SERVICES ------------------ */
 function Services() {
   return (
     <>
@@ -245,50 +279,56 @@ function Services() {
   );
 }
 
+/* ------------------ ABOUT US ------------------ */
 function About() {
-   
-  
   return (
     <>
-      <br></br>
+      <br />
       <div className="about-wrapper">
-        <div className="about-box">
-        
-            ABOUT US
-          
-        </div>
+        <div className="about-box">ABOUT US</div>
         <div className="about-content">
           Welcome to Online Health Clinic – <br />
-          your trusted destination for accessible, affordable, and expert healthcare at your fingertips.<br />
-          At Online Health Clinic, our mission is to simplify healthcare by connecting patients with<br />
-          experienced doctors, specialists, and medical services—all from the comfort of your home. <br />
-          Whether you need a quick consultation, an expert opinion, or access to health records and medicines, <br />
-          we’re here for you 24/7. Driven by technology and compassion, we aim to bring quality care to every corner<br />
-          of the country—bridging the gap between patients and professionals with ease, trust, and transparency.<br />
-          <b><i>Your health, our priority</i></b>
-          <br />
-          <br />
-          
-          
-              
-            </div>
-          </div>
-          <hr />
-          
-        
-      
+          your trusted destination for accessible, affordable, and expert
+          healthcare at your fingertips. <br />
+          At Online Health Clinic, our mission is to simplify healthcare by
+          connecting patients with <br />
+          experienced doctors, specialists, and medical services—all from the
+          comfort of your home. <br />
+          Whether you need a quick consultation, an expert opinion, or access to
+          health records and medicines, <br />
+          we’re here for you 24/7. Driven by technology and compassion, we aim
+          to bring quality care to every corner <br />
+          of the country—bridging the gap between patients and professionals
+          with ease, trust, and transparency. <br />
+          <b>
+            <i>Your health, our priority</i>
+          </b>
+        </div>
+      </div>
       <hr />
     </>
   );
 }
 
+/* ------------------ BUY MEDICINE PAGE ------------------ */
 const BuyMedicinePage = () => (
   <>
     <Main_logo />
     <Nav />
     <CarouselComponent />
     <Specialties />
-  </>  
+  </>
 );
 
-export { Main_logo, Nav, CarouselComponent, Specialties, Why, About, Services,BuyMedicinePage };
+export {
+  Main_logo,
+  Nav,
+  CarouselComponent,
+  Specialties,
+  Why,
+  About,
+  Services,
+  BuyMedicinePage,
+};
+
+

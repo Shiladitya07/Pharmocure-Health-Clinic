@@ -62,7 +62,7 @@ body{
   margin-bottom: 15px;
   background-color: #f9f9f9;
   width: 100%;
-  max-width: 1050px;
+  max-width: 1070px;
   margin-left: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 20px;
@@ -169,7 +169,6 @@ body{
 .modal button:hover {
   background-color: #005d6c;
 }
-
 
 /* HIDDEN SIDEBAR */
 .sidebar.hide {
@@ -357,7 +356,7 @@ body{
   font-weight: bold;
   display: inline-block;
 }
-/* ⭐ Star Ratings */
+/* Star Ratings */
 .stars {
   color: #f5a623; /* Golden yellow */
   font-size: 1.1rem;
@@ -369,7 +368,7 @@ body{
   margin-left: 6px;
 }
 
-/* 🌟 Popular Tag */
+/* Popular Tag */
 .popular-tag {
   background-color: #ffe082;
   color: #b26a00;
@@ -400,3 +399,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+.doctor-card img {
+  width: 190px;         /* same width for all */
+  height: 220px;        /* fixed height */
+  object-fit: cover;    /* crop nicely without stretching */
+  border-radius: 12px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+

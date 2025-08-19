@@ -120,7 +120,17 @@ const Sidebar = () => {
                 <span>Appointment</span>
               </NavLink>
             </li>
+              <li className="item">
+              <NavLink 
+                to="/admin/addappoint" 
+                className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
+              >
+                <i className="bx bx-flag"></i>
+                <span>Add Appointment</span>
+              </NavLink>
+            </li>
           </ul>
+          
         </div>
 
         <div className="sidebar_profile flex">

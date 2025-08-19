@@ -102,7 +102,6 @@ header {
   background-color: #ffffff;       /* optional brighter background on focus */
 }
 
-
 .search-bar {
   width: 300%;
   max-width: 700px;
@@ -175,6 +174,55 @@ header {
     0 0.0625em 0 0 #ececec, 0 0.125em 0 0 #e0e0e0, 0 0.125em 0 0 #dedede,
     0 0.2em 0 0 #dcdcdc, 0 0.225em 0 0 #cacaca, 0 0.225em 0.375em 0 #cecece;
 }
+
+/* ----------------login greet---------------- */
+/* Greeting link style */
+a.greetinglogin {
+  display: inline-block;
+  font-size: 1.2rem !important;   /* force bigger font */
+  font-weight: 600 !important;
+  color: #232322 !important;         /* dark text, no purple */
+  margin-right: 20px;
+  text-decoration: none !important;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+/* Hover effect */
+a.greetinglogin:hover {
+  color: #43c98b !important;      /* green hover */
+}
+
+/* Base nav button (shared) */
+.nav-btn {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Logout specific */
+.logout {
+  background-color: #36c57b;   /* red */
+  color: #fff;
+}
+
+.logout:hover {
+  background-color: #138349;   /* darker red */
+  transform: translateY(-2px);
+}
+
+.logout:active {
+  background-color: #107240;
+  transform: translateY(0);
+}
+
 
 
 /* ---------------- CAROUSEL ---------------- */
@@ -250,7 +298,6 @@ header {
   border: 2px solid #00a67c;
   box-shadow: 0 0 10px rgba(0, 166, 124, 0.2);
 }
-
 
 /* ---------------- WHY CHOOSE US SECTION ---------------- */
 
@@ -350,3 +397,4 @@ li:hover .hover-panel,
   }
 }
 /* button-73 */
+
