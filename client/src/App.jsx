@@ -17,6 +17,7 @@ import LabTest from "./pages/labtest";
 import Overview from "./pages/dashboard"; // Your default dashboard screen
 import PatientVisitChart from "./pages/appgraph";
 import Piechart from "./pages/docover";
+import AddProduct from "./pages/addproduct";
 
 // Home page component (for "/")
 const Home = () => (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/labtest" element={<LabTest />} />
         <Route path="/admin/docover" element={<Piechart />} />
         <Route path="/admin/appgraph" element={<PatientVisitChart />} />
+        <Route path="/admin/addproduct" element={<AddProduct />} />
       </Routes>
 
       <BackToTop />

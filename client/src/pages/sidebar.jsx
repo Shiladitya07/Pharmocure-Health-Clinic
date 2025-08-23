@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import "../assets/styles/sidebar.css"; 
+import "../assets/styles/sidebar.css";
 import Logo from "../assets/images/logo.jpeg";
 
 const Sidebar = () => {
@@ -9,6 +9,8 @@ const Sidebar = () => {
     const sidebarOpenBtn = document.querySelector("#sidebar-open");
     const sidebarCloseBtn = document.querySelector("#sidebar-close");
     const sidebarLockBtn = document.querySelector("#lock-icon");
+
+    if (!sidebar || !sidebarLockBtn) return; // ✅ Prevents null crash
 
     const toggleLock = () => {
       sidebar.classList.toggle("locked");
@@ -37,24 +39,26 @@ const Sidebar = () => {
       sidebar.classList.toggle("close");
     };
 
+    // ✅ Responsive behavior
     if (window.innerWidth < 800) {
       sidebar.classList.add("close");
-      sidebar.classList.remove("locked");
-      sidebar.classList.remove("hoverable");
+      sidebar.classList.remove("locked", "hoverable");
     }
 
+    // ✅ Add event listeners safely
     sidebarLockBtn.addEventListener("click", toggleLock);
     sidebar.addEventListener("mouseleave", hideSidebar);
     sidebar.addEventListener("mouseenter", showSidebar);
-    sidebarOpenBtn?.addEventListener("click", toggleSidebar);
-    sidebarCloseBtn?.addEventListener("click", toggleSidebar);
+    if (sidebarOpenBtn) sidebarOpenBtn.addEventListener("click", toggleSidebar);
+    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", toggleSidebar);
 
     return () => {
+      // ✅ Clean up listeners
       sidebarLockBtn.removeEventListener("click", toggleLock);
       sidebar.removeEventListener("mouseleave", hideSidebar);
       sidebar.removeEventListener("mouseenter", showSidebar);
-      sidebarOpenBtn?.removeEventListener("click", toggleSidebar);
-      sidebarCloseBtn?.removeEventListener("click", toggleSidebar);
+      if (sidebarOpenBtn) sidebarOpenBtn.removeEventListener("click", toggleSidebar);
+      if (sidebarCloseBtn) sidebarCloseBtn.removeEventListener("click", toggleSidebar);
     };
   }, []);
 
@@ -78,8 +82,8 @@ const Sidebar = () => {
               <span className="line"></span>
             </div>
             <li className="item">
-              <NavLink 
-                to="/admin" 
+              <NavLink
+                to="/admin"
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bx-home-alt"></i>
@@ -88,15 +92,15 @@ const Sidebar = () => {
             </li>
           </ul>
 
-          {/* Doctors Section */}
+          {/* Medicines Section */}
           <ul className="menu_item">
             <div className="menu_title flex">
               <span className="title">Medicines</span>
               <span className="line"></span>
             </div>
             <li className="item">
-              <NavLink 
-                to="/admin/docover" 
+              <NavLink
+                to="/admin/docover"
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bxs-magic-wand"></i>
@@ -112,17 +116,17 @@ const Sidebar = () => {
               <span className="line"></span>
             </div>
             <li className="item">
-              <NavLink 
-                to="/admin/appgraph" 
+              <NavLink
+                to="/admin/appgraph"
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bx-flag"></i>
                 <span>Appointment</span>
               </NavLink>
             </li>
-              <li className="item">
-              <NavLink 
-                to="/admin/addappoint" 
+            <li className="item">
+              <NavLink
+                to="/admin/addappoint"
                 className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
               >
                 <i className="bx bx-flag"></i>
@@ -130,7 +134,18 @@ const Sidebar = () => {
               </NavLink>
             </li>
           </ul>
-          
+
+          {/* Products Management */}
+          <p className="menu_title">Products Management</p>
+          <li className="item">
+            <NavLink
+              to="/admin/addproduct"
+              className={({ isActive }) => `link flex ${isActive ? "active" : ""}`}
+            >
+              <i className="bx bx-plus"></i>
+              <span>Add Medicine</span>
+            </NavLink>
+          </li>
         </div>
 
         <div className="sidebar_profile flex">

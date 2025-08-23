@@ -235,21 +235,24 @@ export default function BookAppointment() {
   }, [selectedDoctor]);
 
   const onValuechage = (e) =>{
-    setAppointment({...appoinment, [e.target.name]: e.target.value });
-    console.log(appoinment);
+  setAppointment(prev => ({...prev, [e.target.name]: e.target.value }));
+  console.log(appoinment);
   }
 
   const submitData = async (e) => {
     e.preventDefault();
     try{
       const response = await AppointmentBook(appoinment);
-      if (response.status === 201) {
+      if (response && response.status === 201) {
         alert(response.data);
-      }else{
+      } else if (response && response.status) {
         alert("Something went wrong, please try again later.");
+      } else {
+        alert("Server error: appointment could not be booked. Please check your backend API route.");
       }
     }catch(error){
       console.error("Error submitting appointment data:", error);
+      alert("Error booking appointment: " + (error?.message || "Unknown error"));
     }
   }
 
@@ -343,7 +346,7 @@ export default function BookAppointment() {
         overlayClassName="modal-overlay"
       >
         <h2>Book with {selectedDoctor?.name}</h2>
-        <form onSubmit={handleSubmit}>
+  <form onSubmit={submitData}>
           <input type='hidden' name='drid' value={`${selectedDoctor?.id}`}></input>
           {/* <input required type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} />
           <input required type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
@@ -358,7 +361,7 @@ export default function BookAppointment() {
           <input type="date" name='adate' onChange={onValuechage} />
           <input type="time" name='atime' onChange={onValuechage} />
           <textarea placeholder="Reason for visit" name='reason' onChange={onValuechage}></textarea>
-          <button type="submit" onClick={submitData}>Confirm Booking</button>
+          <button type="submit">Confirm Booking</button>
         </form>
       </Modal>
 

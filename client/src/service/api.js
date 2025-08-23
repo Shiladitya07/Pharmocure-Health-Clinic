@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:8000';
 
 export const AppointmentBook = async (data) => {
     try{
-        return await axios.post(`${API_URL}/bookappointment`, data, {
+        return await axios.post(`${API_URL}/api/bookappointment`, data, {
             headers: {
                 'Content-Type': 'application/json'
             }

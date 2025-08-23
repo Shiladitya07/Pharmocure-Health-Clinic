@@ -7,6 +7,8 @@ import "../assets/styles/specialties.css";
 import "../assets/styles/buymedicine.css";
 import Modal from "react-modal";
 import { Main_logo,Nav,Specialties } from "./home";
+import axios from "axios";
+import { useEffect } from "react";
 
  // ✅ Now safe to export
 
@@ -103,7 +105,7 @@ const DealsSection = () => {
   // Success message state
   const [orderSuccess, setOrderSuccess] = useState(false);
   // Product data
-  const products = [
+  const hardcodedProducts = [
   {
     id: 1,
     title: "Essentials Aqua Blue Hand Wash",
@@ -420,10 +422,24 @@ const DealsSection = () => {
     category: ["All Deals","45%"]
   }
 ];
-
+const [products, setProducts] = useState(hardcodedProducts);
  
 
-  const filteredProducts = products.filter(p => p.category.includes(activeTab))
+  // Ensure category is always an array for filtering
+  const filteredProducts = products.filter(p => {
+    const catArr = Array.isArray(p.category) ? p.category : [p.category];
+    return catArr.includes(activeTab);
+  });
+
+  // Helper to get correct image src for backend products
+  const getProductImgSrc = (item) => {
+    if (typeof item.img === 'string' && item.img.startsWith('/uploads/')) {
+      return `http://localhost:8000${item.img}`;
+    }
+    return item.img;
+  };
+  // Debug: log filtered products
+  console.log("Filtered products for tab:", activeTab, filteredProducts);
 
   // Handle input changes in modal form
   const onBuyValueChange = (e) => {
@@ -460,6 +476,36 @@ const DealsSection = () => {
     const discountedPrice = priceNum - (priceNum * discountPercent) / 100;
     return `₹${discountedPrice.toFixed(2)}`;
   }; 
+
+  // ✅ Fetch products from backend and merge with existing, with logging and validation
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("http://localhost:8000/api/products");
+        console.log("Fetched products from backend:", res.data);
+        if (Array.isArray(res.data)) {
+          // Accept category as string or array, and normalize to array
+          const validProducts = res.data
+            .filter(p => p.title && p.img && p.price && p.discount && (Array.isArray(p.category) || typeof p.category === 'string'))
+            .map(p => ({
+              ...p,
+              category: Array.isArray(p.category) ? p.category : [p.category]
+            }));
+          setProducts(prev => {
+            const existingIds = new Set(prev.map(p => String(p.id ?? p._id)));
+            const newProducts = validProducts.filter(p => !existingIds.has(String(p.id ?? p._id)));
+            return [...prev, ...newProducts];
+          });
+        } else {
+          console.error("Backend did not return an array of products.", res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
 
   return (
     <>
@@ -498,7 +544,7 @@ const DealsSection = () => {
           {filteredProducts.map((item, index) => (
             <div key={index} className="deal-card">
               <div className="tag">{item.label}</div>
-              <img src={item.img} alt={item.title} />
+              <img src={getProductImgSrc(item)} alt={item.title} />
               <p className="deal-title">{item.title}</p>
               <p className="price">{item.price} <span>{item.discount}</span></p>
               <button
@@ -523,7 +569,7 @@ const DealsSection = () => {
           <h2>Buy Medicine: {selectedProduct?.title}</h2>
 
           {/* Hidden product details */}
-          <input type="hidden" name="prodid" value={selectedProduct?.id || ""} />
+          <input type="hidden" name="prodid" value={selectedProduct?.id || selectedProduct?._id || ""} />
           <input
             type="hidden"
             name="prodtitle"

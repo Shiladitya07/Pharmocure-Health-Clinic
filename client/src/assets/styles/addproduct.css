@@ -1,0 +1,85 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.add-product-container {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 120px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.add-product-container h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+
+.add-product-form label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #444;
+}
+
+.add-product-form input,
+.add-product-form textarea,
+.add-product-form select {
+  padding: 10px 12px;
+  margin: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.add-product-form input:focus,
+.add-product-form textarea:focus,
+.add-product-form select:focus {
+  border-color: #4cafef;
+  outline: none;
+  box-shadow: 0 0 4px rgba(76, 175, 239, 0.4);
+}
+
+.add-product-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.add-product-form button {
+  background-color: #097d67;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-product-form button:hover {
+  background-color: #04463a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .add-product-container {
+    width: 90%;
+    margin: 15px auto;
+  }
+}
