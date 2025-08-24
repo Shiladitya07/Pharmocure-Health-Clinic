@@ -10,8 +10,6 @@ import { Main_logo,Nav,Specialties } from "./home";
 import axios from "axios";
 import { useEffect } from "react";
 
- // ✅ Now safe to export
-
 // Images
 import Logo from "../assets/images/logo.jpeg";
 import Gyno from "../assets/images/gyneaco.png";
@@ -477,7 +475,7 @@ const [products, setProducts] = useState(hardcodedProducts);
     return `₹${discountedPrice.toFixed(2)}`;
   }; 
 
-  // ✅ Fetch products from backend and merge with existing, with logging and validation
+  // Fetch products from backend and merge with existing, with logging and validation
   useEffect(() => {
     const fetchProducts = async () => {
       try {

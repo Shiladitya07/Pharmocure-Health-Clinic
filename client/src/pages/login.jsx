@@ -17,7 +17,7 @@ const Login = () => {
     } else {
       setError('');
 
-      // ✅ simulate login success
+      // simulate login success
       const loggedUser = { name: email.split("@")[0], email }; 
       localStorage.setItem("user", JSON.stringify(loggedUser)); // store user in localStorage
 

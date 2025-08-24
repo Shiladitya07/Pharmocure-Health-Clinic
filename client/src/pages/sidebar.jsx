@@ -10,7 +10,7 @@ const Sidebar = () => {
     const sidebarCloseBtn = document.querySelector("#sidebar-close");
     const sidebarLockBtn = document.querySelector("#lock-icon");
 
-    if (!sidebar || !sidebarLockBtn) return; // ✅ Prevents null crash
+    if (!sidebar || !sidebarLockBtn) return; // Prevents null crash
 
     const toggleLock = () => {
       sidebar.classList.toggle("locked");
@@ -39,13 +39,13 @@ const Sidebar = () => {
       sidebar.classList.toggle("close");
     };
 
-    // ✅ Responsive behavior
+    // Responsive behavior
     if (window.innerWidth < 800) {
       sidebar.classList.add("close");
       sidebar.classList.remove("locked", "hoverable");
     }
 
-    // ✅ Add event listeners safely
+    // Add event listeners safely
     sidebarLockBtn.addEventListener("click", toggleLock);
     sidebar.addEventListener("mouseleave", hideSidebar);
     sidebar.addEventListener("mouseenter", showSidebar);
@@ -53,7 +53,7 @@ const Sidebar = () => {
     if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", toggleSidebar);
 
     return () => {
-      // ✅ Clean up listeners
+      // Clean up listeners
       sidebarLockBtn.removeEventListener("click", toggleLock);
       sidebar.removeEventListener("mouseleave", hideSidebar);
       sidebar.removeEventListener("mouseenter", showSidebar);

@@ -7,7 +7,7 @@ const BookingSteps = () => {
       step: "STEP 1",
       title: "Book Appointment",
       description: "Select a Test/Package and book an appointment on Apollo 24|7",
-      icon: "📱", // Replace with real image/icon if needed
+      icon: "📱", 
     },
     {
       step: "STEP 2",

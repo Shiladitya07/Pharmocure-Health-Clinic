@@ -1,13 +1,13 @@
 
 import React from 'react';
 import "../assets/styles/healthrecords.css";  
-import { Main_logo, Nav } from './buymedicine';  // Only these two imported
-import { Carousel } from 'react-responsive-carousel';  // Example, adjust as needed
+import { Main_logo, Nav } from './buymedicine';  
+import { Carousel } from 'react-responsive-carousel';  
 import Banner from "../assets/images/banner1.0.jpg";  // Import your banner image
 import Banner2 from '../assets/images/banner2.0.gif';
 import Banner3 from '../assets/images/banner3.0.jpg';  // <-- import Banner3 here
 import hr from "../assets/images/hr.jpg";  // Import your health records icon
-import hr2 from "../assets/images/hr2.jpg";  // Import another health records icon if needed
+import hr2 from "../assets/images/hr2.jpg";  
 import hr3 from "../assets/images/hr3.jpg";  // Import another health records icon if needed
 import { Link } from 'react-router-dom';  // Import Link for navigation
 import text from "../assets/images/text.png";    // Add this line

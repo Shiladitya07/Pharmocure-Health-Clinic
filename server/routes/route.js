@@ -30,7 +30,7 @@ router.post('/bookappointment', async (req, res) => {
 const multer = require("multer");
 const Product = require("../models/Product");
 
-// ✅ Multer Storage
+// Multer Storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads/");
@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// ✅ Get all products
+//Get all products
 router.get("/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -51,7 +51,7 @@ router.get("/products", async (req, res) => {
   }
 });
 
-// ✅ Add new product (with image)
+// Add new product (with image)
 router.post("/products", upload.single("img"), async (req, res) => {
   try {
     const newProduct = new Product({
@@ -60,7 +60,7 @@ router.post("/products", upload.single("img"), async (req, res) => {
       discount: req.body.discount,
       img: req.file ? `/uploads/${req.file.filename}` : "",
       label: req.body.label,
-      category: [req.body.category] // ✅ Ensure array
+      category: [req.body.category] //  Ensure array
     });
 
     await newProduct.save();

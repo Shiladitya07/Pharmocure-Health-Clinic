@@ -30,13 +30,13 @@ const Main_logo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ✅ check if user is logged in (from localStorage)
+    // check if user is logged in (from localStorage)
     const savedUser = JSON.parse(localStorage.getItem("user"));
     if (savedUser) setUser(savedUser);
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); // ✅ clear user
+    localStorage.removeItem("user"); // clear user
     setUser(null);
     navigate("/"); // back to home
   };

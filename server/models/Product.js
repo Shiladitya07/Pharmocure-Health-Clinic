@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  price: { type: String, required: true }, // You can use Number, but for now string is okay
+  price: { type: String, required: true }, // You can use Number later if needed
   discount: { type: String, required: true },
   label: { type: String },
   category: { type: [String], required: true},

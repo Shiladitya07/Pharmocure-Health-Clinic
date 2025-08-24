@@ -294,7 +294,7 @@ export default function BookAppointment() {
 
           <div className="checkbox-row">
             <input type="checkbox" name="exp10" id="exp10" checked={filter.exp10} onChange={handleFilterChange} />
-            <label htmlFor="exp10">Experience ≥ 10 yrs</label>
+            <label htmlFor="exp10">Experience 10 yrs+</label>
           </div>
         </div>
 

@@ -6,7 +6,7 @@ import "../assets/styles/home.css";
 import "../assets/styles/specialties.css";
 import { useLocation } from "react-router-dom";
 import "../assets/styles/contactus.css";
-import "../assets/styles/contact.css"; // Import the CSS
+import "../assets/styles/contact.css"; 
 import { useEffect } from "react";
 import ContactOptions from './contact';
 import { Main_logo,Nav } from './home';
